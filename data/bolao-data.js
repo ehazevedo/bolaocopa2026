@@ -1,5 +1,5 @@
 window.BOLAO_DATA = {
-  "generatedAt": "2026-06-03T00:59:17.993339+00:00",
+  "generatedAt": "2026-06-03T02:03:47.112984+00:00",
   "sourceFolder": "/Users/ehazevedo/Documents/Copa do Mundo 2026/apostas",
   "rules": {
     "simpleResultPoints": 2,
@@ -958,34 +958,34 @@ window.BOLAO_DATA = {
       ]
     },
     {
-      "id": "seu-nome",
-      "name": "SEU NOME",
-      "file": "SEU NOME_Apostas fase grupos.xlsx",
+      "id": "thais-azevedo",
+      "name": "Thais Azevedo",
+      "file": "Thais_Azevedo_Apostas fase grupos.xlsx",
       "bets": [
         {
           "matchId": 1,
-          "g1": 0,
+          "g1": 2,
           "g2": 0
         },
         {
           "matchId": 2,
-          "g1": 0,
+          "g1": 1,
           "g2": 0
         },
         {
           "matchId": 3,
           "g1": 0,
-          "g2": 0
+          "g2": 1
         },
         {
           "matchId": 4,
-          "g1": 0,
-          "g2": 0
+          "g1": 3,
+          "g2": 1
         },
         {
           "matchId": 5,
           "g1": 0,
-          "g2": 0
+          "g2": 1
         },
         {
           "matchId": 6,
@@ -994,108 +994,108 @@ window.BOLAO_DATA = {
         },
         {
           "matchId": 7,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 1
         },
         {
           "matchId": 8,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 1
         },
         {
           "matchId": 9,
           "g1": 0,
-          "g2": 0
+          "g2": 1
         },
         {
           "matchId": 10,
-          "g1": 0,
-          "g2": 0
+          "g1": 2,
+          "g2": 1
         },
         {
           "matchId": 11,
           "g1": 0,
-          "g2": 0
+          "g2": 2
         },
         {
           "matchId": 12,
-          "g1": 0,
+          "g1": 1,
           "g2": 0
         },
         {
           "matchId": 13,
-          "g1": 0,
-          "g2": 0
+          "g1": 3,
+          "g2": 1
         },
         {
           "matchId": 14,
-          "g1": 0,
+          "g1": 1,
           "g2": 0
         },
         {
           "matchId": 15,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 3
         },
         {
           "matchId": 16,
-          "g1": 0,
-          "g2": 0
+          "g1": 5,
+          "g2": 1
         },
         {
           "matchId": 17,
-          "g1": 0,
+          "g1": 1,
           "g2": 0
         },
         {
           "matchId": 18,
-          "g1": 0,
+          "g1": 3,
           "g2": 0
         },
         {
           "matchId": 19,
-          "g1": 0,
-          "g2": 0
+          "g1": 2,
+          "g2": 1
         },
         {
           "matchId": 20,
           "g1": 0,
-          "g2": 0
+          "g2": 2
         },
         {
           "matchId": 21,
-          "g1": 0,
+          "g1": 1,
           "g2": 0
         },
         {
           "matchId": 22,
-          "g1": 0,
-          "g2": 0
+          "g1": 2,
+          "g2": 1
         },
         {
           "matchId": 23,
           "g1": 0,
-          "g2": 0
+          "g2": 2
         },
         {
           "matchId": 24,
-          "g1": 0,
-          "g2": 0
+          "g1": 3,
+          "g2": 1
         },
         {
           "matchId": 25,
-          "g1": 0,
+          "g1": 3,
           "g2": 0
         },
         {
           "matchId": 26,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 1
         },
         {
           "matchId": 27,
-          "g1": 0,
-          "g2": 0
+          "g1": 3,
+          "g2": 1
         },
         {
           "matchId": 28,
@@ -1104,17 +1104,17 @@ window.BOLAO_DATA = {
         },
         {
           "matchId": 29,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 2
         },
         {
           "matchId": 30,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 5
         },
         {
           "matchId": 31,
-          "g1": 0,
+          "g1": 2,
           "g2": 0
         },
         {
@@ -1124,27 +1124,27 @@ window.BOLAO_DATA = {
         },
         {
           "matchId": 33,
-          "g1": 0,
-          "g2": 0
+          "g1": 3,
+          "g2": 1
         },
         {
           "matchId": 34,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 3
         },
         {
           "matchId": 35,
           "g1": 0,
-          "g2": 0
+          "g2": 1
         },
         {
           "matchId": 36,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 5
         },
         {
           "matchId": 37,
-          "g1": 0,
+          "g1": 3,
           "g2": 0
         },
         {
@@ -1154,88 +1154,88 @@ window.BOLAO_DATA = {
         },
         {
           "matchId": 39,
-          "g1": 0,
+          "g1": 4,
           "g2": 0
         },
         {
           "matchId": 40,
           "g1": 0,
-          "g2": 0
+          "g2": 1
         },
         {
           "matchId": 41,
-          "g1": 0,
+          "g1": 1,
           "g2": 0
         },
         {
           "matchId": 42,
           "g1": 0,
-          "g2": 0
+          "g2": 4
         },
         {
           "matchId": 43,
-          "g1": 0,
+          "g1": 3,
           "g2": 0
         },
         {
           "matchId": 44,
           "g1": 0,
-          "g2": 0
+          "g2": 3
         },
         {
           "matchId": 45,
-          "g1": 0,
-          "g2": 0
+          "g1": 3,
+          "g2": 1
         },
         {
           "matchId": 46,
-          "g1": 0,
+          "g1": 2,
           "g2": 0
         },
         {
           "matchId": 47,
           "g1": 0,
-          "g2": 0
+          "g2": 1
         },
         {
           "matchId": 48,
-          "g1": 0,
-          "g2": 0
+          "g1": 2,
+          "g2": 3
         },
         {
           "matchId": 49,
-          "g1": 0,
+          "g1": 3,
           "g2": 0
         },
         {
           "matchId": 50,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 2
         },
         {
           "matchId": 51,
-          "g1": 0,
+          "g1": 2,
           "g2": 0
         },
         {
           "matchId": 52,
-          "g1": 0,
-          "g2": 0
+          "g1": 3,
+          "g2": 1
         },
         {
           "matchId": 53,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 3
         },
         {
           "matchId": 54,
-          "g1": 0,
+          "g1": 1,
           "g2": 0
         },
         {
           "matchId": 55,
-          "g1": 0,
-          "g2": 0
+          "g1": 2,
+          "g2": 1
         },
         {
           "matchId": 56,
@@ -1244,86 +1244,88 @@ window.BOLAO_DATA = {
         },
         {
           "matchId": 57,
-          "g1": 0,
+          "g1": 2,
           "g2": 0
         },
         {
           "matchId": 58,
-          "g1": 0,
+          "g1": 1,
           "g2": 0
         },
         {
           "matchId": 59,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 2
         },
         {
           "matchId": 60,
           "g1": 0,
-          "g2": 0
+          "g2": 2
         },
         {
           "matchId": 61,
-          "g1": 0,
+          "g1": 5,
           "g2": 0
         },
         {
           "matchId": 62,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 3
         },
         {
           "matchId": 63,
-          "g1": 0,
+          "g1": 3,
           "g2": 0
         },
         {
           "matchId": 64,
-          "g1": 0,
-          "g2": 0
+          "g1": 3,
+          "g2": 1
         },
         {
           "matchId": 65,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 2
         },
         {
           "matchId": 66,
           "g1": 0,
-          "g2": 0
+          "g2": 1
         },
         {
           "matchId": 67,
-          "g1": 0,
-          "g2": 0
+          "g1": 2,
+          "g2": 2
         },
         {
           "matchId": 68,
           "g1": 0,
-          "g2": 0
+          "g2": 1
         },
         {
           "matchId": 69,
-          "g1": 0,
+          "g1": 3,
           "g2": 0
         },
         {
           "matchId": 70,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 3
         },
         {
           "matchId": 71,
-          "g1": 0,
-          "g2": 0
+          "g1": 1,
+          "g2": 3
         },
         {
           "matchId": 72,
-          "g1": 0,
+          "g1": 2,
           "g2": 0
         }
       ]
     }
   ],
-  "warnings": []
+  "warnings": [
+    "SEU NOME_Apostas fase grupos.xlsx: arquivo modelo ignorado."
+  ]
 };

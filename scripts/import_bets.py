@@ -49,11 +49,12 @@ def as_score(value) -> int:
 
 def participant_name(path: Path, worksheet) -> str:
     cell_name = worksheet["I2"].value
-    if cell_name:
+    if cell_name and str(cell_name).strip().upper() != "SEU NOME":
         return str(cell_name).strip()
     suffix = "_Apostas fase grupos"
     stem = path.stem
-    return stem.replace(suffix, "").strip() or stem
+    file_name = stem.replace(suffix, "").replace("_", " ").strip()
+    return file_name or stem
 
 
 def extract_workbook(path: Path):
@@ -126,6 +127,10 @@ def build_data(input_dir: Path):
     warnings = []
 
     for path in files:
+        if path.stem.upper().startswith("SEU NOME_"):
+            warnings.append(f"{path.name}: arquivo modelo ignorado.")
+            continue
+
         extracted = extract_workbook(path)
         participant = extracted["participant"]
         dedupe_id(participant, seen_ids)
