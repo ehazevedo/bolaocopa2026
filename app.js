@@ -132,12 +132,14 @@
     }
 
     const headers = (payload.table.cols || []).map((col, index) => normalizeHeader(col.label || col.id || `col${index}`));
-    const matchIdIndex = findHeader(headers, ["matchid", "jogo", "match", "id"]);
-    const g1Index = findHeader(headers, ["g1", "placar1", "gols1", "time1", "casa"]);
-    const g2Index = findHeader(headers, ["g2", "placar2", "gols2", "time2", "fora"]);
+    let matchIdIndex = findHeader(headers, ["matchid", "jogo", "match", "id"]);
+    let g1Index = findHeader(headers, ["g1", "placar1", "gols1", "time1", "casa"]);
+    let g2Index = findHeader(headers, ["g2", "placar2", "gols2", "time2", "fora"]);
 
     if (matchIdIndex < 0 || g1Index < 0 || g2Index < 0) {
-      throw new Error("use as colunas matchId, g1 e g2 na primeira linha");
+      matchIdIndex = 0;
+      g1Index = 1;
+      g2Index = 2;
     }
 
     const nextResults = {};
@@ -146,7 +148,8 @@
       const matchId = numberFromCell(cells[matchIdIndex]);
       const g1 = numberFromCell(cells[g1Index]);
       const g2 = numberFromCell(cells[g2Index]);
-      if (!Number.isInteger(matchId) || !Number.isInteger(g1) || !Number.isInteger(g2)) return;
+      if (!Number.isInteger(matchId)) return;
+      if (!Number.isInteger(g1) || !Number.isInteger(g2)) return;
       nextResults[String(matchId)] = { g1, g2 };
     });
 
