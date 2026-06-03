@@ -1,0 +1,1 @@
+window.BOLAO_RESULTS = {};

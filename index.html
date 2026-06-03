@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bolão Copa do Mundo FIFA 2026</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Bolão Copa do Mundo FIFA 2026</p>
+        <h1>Dashboard de Pontuação</h1>
+      </div>
+      <nav class="tabs" aria-label="Abas principais">
+        <button class="tab active" data-tab="dashboard">Classificação</button>
+        <button class="tab" data-tab="results">Placar final</button>
+        <button class="tab" data-tab="bets">Palpites</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="dashboard" class="view active">
+        <div class="summary-grid">
+          <article class="metric">
+            <span>Participantes</span>
+            <strong id="metricParticipants">0</strong>
+          </article>
+          <article class="metric">
+            <span>Jogos cadastrados</span>
+            <strong id="metricMatches">0</strong>
+          </article>
+          <article class="metric">
+            <span>Jogos com resultado</span>
+            <strong id="metricCompleted">0</strong>
+          </article>
+          <article class="metric">
+            <span>Líder atual</span>
+            <strong id="metricLeader">-</strong>
+          </article>
+        </div>
+
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Classificação Geral</h2>
+              <p>Pontos brutos por acertos e pontuação ponderada por etapa.</p>
+            </div>
+            <button id="resetResults" class="ghost-button">Limpar resultados</button>
+          </div>
+          <div class="table-wrap">
+            <table id="leaderboard">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Participante</th>
+                  <th>Pontos</th>
+                  <th>Ponderado</th>
+                  <th>Exatos</th>
+                  <th>Resultado</th>
+                  <th>Jogos pontuados</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel">
+          <h2>Regras Aplicadas</h2>
+          <div class="rules">
+            <span>Resultado simples: 2 pontos</span>
+            <span>Placar exato: +3 pontos</span>
+            <span>Máximo por jogo: 5 pontos</span>
+            <span>Fase de grupos: 35% do total</span>
+          </div>
+        </section>
+      </section>
+
+      <section id="results" class="view">
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Placar Final dos Jogos</h2>
+              <p>Digite o resultado final considerado pelo regulamento e salve o arquivo de publicação.</p>
+            </div>
+            <div class="panel-actions">
+              <button id="savePublishedResults" class="ghost-button">Salvar para publicação</button>
+              <button id="refreshScores" class="ghost-button">Atualizar classificação</button>
+            </div>
+          </div>
+          <div id="resultsStatusMessage" class="status-message" role="status" aria-live="polite"></div>
+          <div id="resultsGrid" class="match-grid"></div>
+        </section>
+      </section>
+
+      <section id="bets" class="view">
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Palpites por Participante</h2>
+              <p>Selecione uma pessoa para ver os placares enviados e a pontuação por jogo.</p>
+            </div>
+            <div class="panel-actions">
+              <button id="refreshBets" class="ghost-button">Atualizar palpites</button>
+              <label class="select-label">
+                Participante
+                <select id="participantSelect"></select>
+              </label>
+            </div>
+          </div>
+          <div id="statusMessage" class="status-message" role="status" aria-live="polite"></div>
+          <div class="table-wrap">
+            <table id="participantBets">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Grupo</th>
+                  <th>Jogo</th>
+                  <th>Palpite</th>
+                  <th>Resultado</th>
+                  <th>Pontos</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="data/bolao-data.js"></script>
+    <script src="data/results.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
