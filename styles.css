@@ -103,6 +103,18 @@ main {
   display: block;
 }
 
+.admin-only {
+  display: none;
+}
+
+body.admin-mode .admin-only {
+  display: inline-flex;
+}
+
+body.admin-mode .panel-actions.admin-only {
+  display: flex;
+}
+
 .summary-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -309,6 +321,13 @@ tbody tr:hover {
   font: inherit;
   font-weight: 800;
   text-align: center;
+}
+
+.score-input[disabled] {
+  background: #f7faf4;
+  color: var(--ink);
+  opacity: 1;
+  cursor: default;
 }
 
 .versus {

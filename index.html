@@ -46,7 +46,7 @@
               <h2>Classificação Geral</h2>
               <p>Pontos brutos por acertos e pontuação ponderada por etapa.</p>
             </div>
-            <button id="resetResults" class="ghost-button">Limpar resultados</button>
+            <button id="resetResults" class="ghost-button admin-only">Limpar resultados</button>
           </div>
           <div class="table-wrap">
             <table id="leaderboard">
@@ -82,9 +82,9 @@
           <div class="panel-heading">
             <div>
               <h2>Placar Final dos Jogos</h2>
-              <p>Digite o resultado final considerado pelo regulamento e salve o arquivo de publicação.</p>
+              <p id="resultsHelpText">Resultados oficiais considerados pelo regulamento do bolão.</p>
             </div>
-            <div class="panel-actions">
+            <div class="panel-actions admin-only">
               <button id="savePublishedResults" class="ghost-button">Salvar para publicação</button>
               <button id="refreshScores" class="ghost-button">Atualizar classificação</button>
             </div>
@@ -102,7 +102,7 @@
               <p>Selecione uma pessoa para ver os placares enviados e a pontuação por jogo.</p>
             </div>
             <div class="panel-actions">
-              <button id="refreshBets" class="ghost-button">Atualizar palpites</button>
+              <button id="refreshBets" class="ghost-button admin-only">Atualizar palpites</button>
               <label class="select-label">
                 Participante
                 <select id="participantSelect"></select>

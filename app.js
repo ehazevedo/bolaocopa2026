@@ -1,8 +1,10 @@
 (function () {
   let data = window.BOLAO_DATA || { matches: [], participants: [], rules: {} };
   const publishedResults = window.BOLAO_RESULTS || {};
+  const isLocalHost = ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
+  const isAdmin = isLocalHost || new URLSearchParams(window.location.search).get("admin") === "1";
   const storageKey = "bolao-2026-resultados";
-  const results = { ...publishedResults, ...loadResults() };
+  const results = isAdmin ? { ...publishedResults, ...loadResults() } : { ...publishedResults };
 
   const tabs = document.querySelectorAll(".tab");
   const views = document.querySelectorAll(".view");
@@ -12,6 +14,12 @@
   const participantBetsBody = document.querySelector("#participantBets tbody");
   const statusMessage = document.querySelector("#statusMessage");
   const resultsStatusMessage = document.querySelector("#resultsStatusMessage");
+  const resultsHelpText = document.querySelector("#resultsHelpText");
+
+  document.body.classList.toggle("admin-mode", isAdmin);
+  if (resultsHelpText && isAdmin) {
+    resultsHelpText.textContent = "Digite o resultado final considerado pelo regulamento e salve o arquivo de publicação.";
+  }
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
@@ -86,7 +94,7 @@
     const cleanResults = normalizedResults();
     const js = "window.BOLAO_RESULTS = " + JSON.stringify(cleanResults, null, 2) + ";\n";
 
-    if (window.location.protocol !== "file:") {
+    if (isLocalHost) {
       try {
         const response = await fetch("/api/save-results", {
           method: "POST",
@@ -105,7 +113,7 @@
     }
 
     downloadResultsFile(js);
-    showStatus(resultsStatusMessage, "Arquivo results.js baixado. Substitua data/results.js antes de publicar.", "success");
+    showStatus(resultsStatusMessage, "Arquivo results.js baixado. Substitua data/results.js e publique no GitHub.", "success");
   }
 
   function normalizedResults() {
@@ -272,11 +280,11 @@
               <strong class="team-right">${escapeHtml(match.team1)}</strong>
               <input class="score-input" type="number" min="0" inputmode="numeric"
                 value="${actual.g1}" aria-label="${escapeHtml(match.team1)}"
-                data-match="${match.id}" data-side="g1">
+                data-match="${match.id}" data-side="g1" ${isAdmin ? "" : "disabled"}>
               <span class="versus">x</span>
               <input class="score-input" type="number" min="0" inputmode="numeric"
                 value="${actual.g2}" aria-label="${escapeHtml(match.team2)}"
-                data-match="${match.id}" data-side="g2">
+                data-match="${match.id}" data-side="g2" ${isAdmin ? "" : "disabled"}>
               <strong>${escapeHtml(match.team2)}</strong>
             </div>
           </article>
@@ -286,6 +294,7 @@
 
     resultsGrid.querySelectorAll("input").forEach((input) => {
       input.addEventListener("input", () => {
+        if (!isAdmin) return;
         const matchId = input.dataset.match;
         const side = input.dataset.side;
         results[matchId] = results[matchId] || { g1: "", g2: "" };

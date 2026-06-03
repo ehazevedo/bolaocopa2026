@@ -20,6 +20,8 @@ Para editar placares e salvar `data/results.js` automaticamente, rode:
 
 Abra `http://127.0.0.1:8000/index.html`, digite os placares na aba **Placar final** e clique em **Salvar para publicação**.
 
+No GitHub Pages, visitantes veem o dashboard em modo somente leitura. Os botões administrativos aparecem apenas em `localhost` ou se a URL tiver `?admin=1`.
+
 ## Publicar no GitHub Pages
 
 1. Crie um repositório no GitHub.
