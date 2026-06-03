@@ -20,9 +20,6 @@ class BolaoHandler(SimpleHTTPRequestHandler):
         if self.path == "/api/import-bets":
             self.import_bets()
             return
-        if self.path == "/api/save-results":
-            self.save_results()
-            return
         self.send_error(404, "Endpoint não encontrado")
 
     def import_bets(self):
@@ -35,33 +32,6 @@ class BolaoHandler(SimpleHTTPRequestHandler):
                 encoding="utf-8",
             )
             self.respond_json({"ok": True, "data": data})
-        except Exception as exc:
-            self.respond_json({"ok": False, "error": str(exc)}, status=500)
-
-    def save_results(self):
-        try:
-            length = int(self.headers.get("Content-Length", "0"))
-            payload = json.loads(self.rfile.read(length).decode("utf-8"))
-            results = payload.get("results", {})
-            clean_results = {}
-
-            for key, value in results.items():
-                if not isinstance(value, dict):
-                    continue
-                if value.get("g1") is None or value.get("g2") is None:
-                    continue
-                clean_results[str(int(key))] = {
-                    "g1": int(value["g1"]),
-                    "g2": int(value["g2"]),
-                }
-
-            output = ROOT / "data" / "results.js"
-            output.parent.mkdir(parents=True, exist_ok=True)
-            output.write_text(
-                "window.BOLAO_RESULTS = " + json.dumps(clean_results, ensure_ascii=False, indent=2) + ";\n",
-                encoding="utf-8",
-            )
-            self.respond_json({"ok": True, "saved": len(clean_results)})
         except Exception as exc:
             self.respond_json({"ok": False, "error": str(exc)}, status=500)
 

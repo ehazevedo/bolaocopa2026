@@ -25,14 +25,6 @@ Para atualizar pelo celular, edite os placares na Google Sheet. O dashboard púb
 
 `data/results.js` fica como fallback caso a planilha esteja indisponível.
 
-Para editar placares localmente e salvar `data/results.js` manualmente, rode:
-
-```bash
-/Users/ehazevedo/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 scripts/server.py
-```
-
-Abra `http://127.0.0.1:8000/index.html`, digite os placares na aba **Placar final** e clique em **Salvar para publicação**.
-
 No GitHub Pages, visitantes veem o dashboard em modo somente leitura. Os botões administrativos aparecem apenas em `localhost`.
 
 ## Publicar no GitHub Pages

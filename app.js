@@ -4,8 +4,7 @@
   const config = window.BOLAO_CONFIG || {};
   const isLocalHost = ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
   const isAdmin = isLocalHost;
-  const storageKey = "bolao-2026-resultados";
-  let results = isAdmin ? { ...publishedResults, ...loadResults() } : { ...publishedResults };
+  let results = { ...publishedResults };
 
   const tabs = document.querySelectorAll(".tab");
   const views = document.querySelectorAll(".view");
@@ -15,12 +14,8 @@
   const participantBetsBody = document.querySelector("#participantBets tbody");
   const statusMessage = document.querySelector("#statusMessage");
   const resultsStatusMessage = document.querySelector("#resultsStatusMessage");
-  const resultsHelpText = document.querySelector("#resultsHelpText");
 
   document.body.classList.toggle("admin-mode", isAdmin);
-  if (resultsHelpText && isAdmin) {
-    resultsHelpText.textContent = "Digite o resultado final considerado pelo regulamento e salve o arquivo de publicação.";
-  }
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
@@ -34,19 +29,7 @@
   document.getElementById("resetResults").addEventListener("click", () => {
     if (!confirm("Limpar todos os resultados digitados neste navegador?")) return;
     Object.keys(results).forEach((key) => delete results[key]);
-    saveResults();
     renderAll();
-  });
-
-  document.getElementById("refreshScores").addEventListener("click", () => {
-    renderMetrics();
-    renderLeaderboard();
-    renderParticipantBets();
-    showStatus(resultsStatusMessage, "Classificação e pontuação dos palpites atualizadas.", "success");
-  });
-
-  document.getElementById("savePublishedResults").addEventListener("click", async () => {
-    await savePublishedResults();
   });
 
   document.getElementById("refreshBets").addEventListener("click", async () => {
@@ -92,39 +75,12 @@
     }
   }
 
-  async function savePublishedResults() {
-    const cleanResults = normalizedResults();
-    const js = "window.BOLAO_RESULTS = " + JSON.stringify(cleanResults, null, 2) + ";\n";
-
-    if (isLocalHost) {
-      try {
-        const response = await fetch("/api/save-results", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ results: cleanResults }),
-        });
-        const payload = await response.json();
-        if (!response.ok || !payload.ok) throw new Error(payload.error || "Não foi possível salvar.");
-        showStatus(resultsStatusMessage, "Arquivo data/results.js salvo. Agora é só publicar no GitHub.", "success");
-        return;
-      } catch (error) {
-        downloadResultsFile(js);
-        showStatus(resultsStatusMessage, `Não consegui salvar direto; baixei o results.js para você. Detalhe: ${error.message}`, "error");
-        return;
-      }
-    }
-
-    downloadResultsFile(js);
-    showStatus(resultsStatusMessage, "Arquivo results.js baixado. Substitua data/results.js e publique no GitHub.", "success");
-  }
-
   async function loadSheetResults() {
     if (!config.googleSheetId) return;
 
     try {
       const sheetResults = await fetchGoogleSheetResults(config.googleSheetId, config.googleSheetGid || "0");
       results = sheetResults;
-      if (isAdmin) saveResults();
       renderAll();
       showStatus(resultsStatusMessage, `Resultados carregados do Google Sheets: ${Object.keys(results).length} jogo(s).`, "success");
     } catch (error) {
@@ -215,25 +171,6 @@
     return Number.isFinite(value) ? value : null;
   }
 
-  function normalizedResults() {
-    return Object.fromEntries(
-      Object.entries(results)
-        .filter(([, value]) => value && value.g1 !== "" && value.g2 !== "" && value.g1 !== null && value.g2 !== null)
-        .map(([matchId, value]) => [matchId, { g1: Number(value.g1), g2: Number(value.g2) }])
-        .sort((a, b) => Number(a[0]) - Number(b[0])),
-    );
-  }
-
-  function downloadResultsFile(js) {
-    const blob = new Blob([js], { type: "application/javascript;charset=utf-8" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "results.js";
-    link.click();
-    URL.revokeObjectURL(url);
-  }
-
   function showStatus(target, message, kind) {
     if (!target) return;
     target.textContent = message;
@@ -243,18 +180,6 @@
         if (target.textContent === message) target.className = "status-message";
       }, 4000);
     }
-  }
-
-  function loadResults() {
-    try {
-      return JSON.parse(localStorage.getItem(storageKey) || "{}");
-    } catch {
-      return {};
-    }
-  }
-
-  function saveResults() {
-    localStorage.setItem(storageKey, JSON.stringify(results));
   }
 
   function resultCode(g1, g2) {
@@ -394,11 +319,6 @@
     resultsGrid.querySelectorAll("input").forEach((input) => {
       input.addEventListener("input", () => {
         if (!isAdmin) return;
-        const matchId = input.dataset.match;
-        const side = input.dataset.side;
-        results[matchId] = results[matchId] || { g1: "", g2: "" };
-        results[matchId][side] = input.value === "" ? "" : Number(input.value);
-        saveResults();
         renderMetrics();
         renderLeaderboard();
         renderParticipantBets();
