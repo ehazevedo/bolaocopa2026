@@ -1,10 +1,11 @@
 (function () {
   let data = window.BOLAO_DATA || { matches: [], participants: [], rules: {} };
   const publishedResults = window.BOLAO_RESULTS || {};
+  const config = window.BOLAO_CONFIG || {};
   const isLocalHost = ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
-  const isAdmin = isLocalHost || new URLSearchParams(window.location.search).get("admin") === "1";
+  const isAdmin = isLocalHost;
   const storageKey = "bolao-2026-resultados";
-  const results = isAdmin ? { ...publishedResults, ...loadResults() } : { ...publishedResults };
+  let results = isAdmin ? { ...publishedResults, ...loadResults() } : { ...publishedResults };
 
   const tabs = document.querySelectorAll(".tab");
   const views = document.querySelectorAll(".view");
@@ -55,6 +56,7 @@
   participantSelect.addEventListener("change", renderParticipantBets);
 
   renderAll();
+  loadSheetResults();
 
   function renderAll() {
     renderMetrics();
@@ -114,6 +116,103 @@
 
     downloadResultsFile(js);
     showStatus(resultsStatusMessage, "Arquivo results.js baixado. Substitua data/results.js e publique no GitHub.", "success");
+  }
+
+  async function loadSheetResults() {
+    if (!config.googleSheetId) return;
+
+    try {
+      const sheetResults = await fetchGoogleSheetResults(config.googleSheetId, config.googleSheetGid || "0");
+      results = sheetResults;
+      if (isAdmin) saveResults();
+      renderAll();
+      showStatus(resultsStatusMessage, `Resultados carregados do Google Sheets: ${Object.keys(results).length} jogo(s).`, "success");
+    } catch (error) {
+      showStatus(resultsStatusMessage, `Não consegui carregar o Google Sheets; usando fallback publicado. Detalhe: ${error.message}`, "error");
+    }
+  }
+
+  function fetchGoogleSheetResults(sheetId, gid) {
+    return new Promise((resolve, reject) => {
+      const callbackName = `__bolaoSheetCallback${Date.now()}${Math.floor(Math.random() * 1000)}`;
+      const timeout = window.setTimeout(() => {
+        cleanup();
+        reject(new Error("tempo limite ao ler a planilha"));
+      }, 12000);
+
+      const script = document.createElement("script");
+      const url = new URL(`https://docs.google.com/spreadsheets/d/${encodeURIComponent(sheetId)}/gviz/tq`);
+      url.searchParams.set("gid", gid);
+      url.searchParams.set("tqx", `out:json;responseHandler:${callbackName}`);
+      url.searchParams.set("tq", "select *");
+      script.src = url.toString();
+      script.onerror = () => {
+        cleanup();
+        reject(new Error("a planilha não está pública ou não respondeu"));
+      };
+
+      window[callbackName] = (payload) => {
+        cleanup();
+        try {
+          resolve(parseGoogleSheetPayload(payload));
+        } catch (error) {
+          reject(error);
+        }
+      };
+
+      function cleanup() {
+        window.clearTimeout(timeout);
+        delete window[callbackName];
+        script.remove();
+      }
+
+      document.head.appendChild(script);
+    });
+  }
+
+  function parseGoogleSheetPayload(payload) {
+    if (!payload || !payload.table) {
+      throw new Error("resposta inválida da planilha");
+    }
+
+    const headers = (payload.table.cols || []).map((col, index) => normalizeHeader(col.label || col.id || `col${index}`));
+    const matchIdIndex = findHeader(headers, ["matchid", "jogo", "match", "id"]);
+    const g1Index = findHeader(headers, ["g1", "placar1", "gols1", "time1", "casa"]);
+    const g2Index = findHeader(headers, ["g2", "placar2", "gols2", "time2", "fora"]);
+
+    if (matchIdIndex < 0 || g1Index < 0 || g2Index < 0) {
+      throw new Error("use as colunas matchId, g1 e g2 na primeira linha");
+    }
+
+    const nextResults = {};
+    (payload.table.rows || []).forEach((row) => {
+      const cells = row.c || [];
+      const matchId = numberFromCell(cells[matchIdIndex]);
+      const g1 = numberFromCell(cells[g1Index]);
+      const g2 = numberFromCell(cells[g2Index]);
+      if (!Number.isInteger(matchId) || !Number.isInteger(g1) || !Number.isInteger(g2)) return;
+      nextResults[String(matchId)] = { g1, g2 };
+    });
+
+    return nextResults;
+  }
+
+  function normalizeHeader(value) {
+    return String(value || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-zA-Z0-9]/g, "")
+      .toLowerCase();
+  }
+
+  function findHeader(headers, candidates) {
+    return headers.findIndex((header) => candidates.includes(header));
+  }
+
+  function numberFromCell(cell) {
+    if (!cell || cell.v === null || cell.v === undefined || cell.v === "") return null;
+    const value = Number(cell.v);
+    return Number.isFinite(value) ? value : null;
   }
 
   function normalizedResults() {

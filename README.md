@@ -12,7 +12,20 @@ Coloque os arquivos Excel recebidos na pasta `apostas/` e rode:
 
 ## Atualizar resultados
 
-Para editar placares e salvar `data/results.js` automaticamente, rode:
+Os resultados oficiais são lidos de uma Google Sheet configurada em `data/config.js`.
+
+A planilha deve estar compartilhada como **qualquer pessoa com o link pode visualizar** e precisa ter as colunas:
+
+| matchId | g1 | g2 |
+| --- | --- | --- |
+| 1 | 2 | 0 |
+| 2 | 1 | 1 |
+
+Para atualizar pelo celular, edite os placares na Google Sheet. O dashboard público recalcula quando a página é aberta ou recarregada.
+
+`data/results.js` fica como fallback caso a planilha esteja indisponível.
+
+Para editar placares localmente e salvar `data/results.js` manualmente, rode:
 
 ```bash
 /Users/ehazevedo/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3 scripts/server.py
@@ -20,7 +33,7 @@ Para editar placares e salvar `data/results.js` automaticamente, rode:
 
 Abra `http://127.0.0.1:8000/index.html`, digite os placares na aba **Placar final** e clique em **Salvar para publicação**.
 
-No GitHub Pages, visitantes veem o dashboard em modo somente leitura. Os botões administrativos aparecem apenas em `localhost` ou se a URL tiver `?admin=1`.
+No GitHub Pages, visitantes veem o dashboard em modo somente leitura. Os botões administrativos aparecem apenas em `localhost`.
 
 ## Publicar no GitHub Pages
 
