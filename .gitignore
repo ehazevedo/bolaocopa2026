@@ -3,3 +3,4 @@ __pycache__/
 scripts/__pycache__/
 apostas/*.xlsx
 apostas/*.xls
+data/*audit*.csv

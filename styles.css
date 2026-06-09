@@ -267,6 +267,39 @@ tbody tr:hover {
   gap: 10px;
 }
 
+.total-prize {
+  color: var(--brand-2);
+  font-size: 28px;
+  white-space: nowrap;
+}
+
+.prize-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.prize-grid article {
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfff8;
+}
+
+.prize-grid span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.prize-grid strong {
+  color: var(--brand-2);
+  font-size: 24px;
+}
+
 .rules span {
   display: inline-flex;
   padding: 9px 11px;
@@ -388,6 +421,10 @@ select {
   .summary-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .prize-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 560px) {
@@ -396,6 +433,10 @@ select {
   }
 
   .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .prize-grid {
     grid-template-columns: 1fr;
   }
 

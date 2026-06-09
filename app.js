@@ -43,6 +43,7 @@
 
   function renderAll() {
     renderMetrics();
+    renderPrizes();
     renderLeaderboard();
     renderResultsGrid();
     renderParticipantSelect();
@@ -259,6 +260,18 @@
     document.getElementById("metricLeader").textContent = rows[0]?.participant.name || "-";
   }
 
+  function renderPrizes() {
+    const prizes = data.prizes || {};
+    const participants = Number(prizes.participants || data.participants.length || 0);
+    const entryFee = Number(prizes.entryFee || 150);
+    const total = Number(prizes.total || participants * entryFee);
+    document.getElementById("prizeTotal").textContent = brl(total);
+    document.getElementById("prizeFirst").textContent = brl(prizes.first || total * 0.6);
+    document.getElementById("prizeSecond").textContent = brl(prizes.second || total * 0.3);
+    document.getElementById("prizeThird").textContent = brl(prizes.third || total * 0.1);
+    document.getElementById("entryFee").textContent = `${participants} x ${brl(entryFee)}`;
+  }
+
   function renderLeaderboard() {
     const rows = leaderboardRows();
     if (!rows.length) {
@@ -380,5 +393,13 @@
       .replaceAll(">", "&gt;")
       .replaceAll('"', "&quot;")
       .replaceAll("'", "&#039;");
+  }
+
+  function brl(value) {
+    return Number(value || 0).toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+      maximumFractionDigits: 0,
+    });
   }
 })();
