@@ -13,11 +13,11 @@ from pypdf import PdfReader
 DEFAULT_PDF = "/Users/ehazevedo/Downloads/Bolao Copa do Mundo Fifa 2026.pdf"
 
 MANUAL_CORRECTIONS = {
-    ("CAROL", 66): (1, 0),
+    ("CAROL", 66): (1, 1),
 }
 
 NAME_CORRECTIONS = {
-    "TAIS": "Thais",
+    "TAIS": "THAIS",
 }
 
 

@@ -1,5 +1,5 @@
 window.BOLAO_DATA = {
-  "generatedAt": "2026-06-09T12:20:37.955895+00:00",
+  "generatedAt": "2026-06-09T19:17:58.962660+00:00",
   "sourceFolder": "/Users/ehazevedo/Downloads/Bolao Copa do Mundo Fifa 2026.pdf",
   "rules": {
     "simpleResultPoints": 2,
@@ -1326,7 +1326,7 @@ window.BOLAO_DATA = {
     },
     {
       "id": "thais",
-      "name": "Thais",
+      "name": "THAIS",
       "file": "Bolao Copa do Mundo Fifa 2026.pdf página 1 coluna 3",
       "bets": [
         {
@@ -8263,7 +8263,7 @@ window.BOLAO_DATA = {
         {
           "matchId": 66,
           "g1": 1,
-          "g2": 0
+          "g2": 1
         },
         {
           "matchId": 67,
