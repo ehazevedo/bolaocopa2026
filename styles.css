@@ -90,9 +90,29 @@ h2 {
   color: var(--brand-2);
 }
 
+.tab:focus-visible,
+.ghost-button:focus-visible,
+select:focus-visible,
+.text-input:focus-visible,
+summary:focus-visible {
+  outline: 3px solid rgba(255, 223, 0, 0.9);
+  outline-offset: 2px;
+}
+
 main {
   width: min(1360px, calc(100% - 32px));
   margin: 26px auto 44px;
+}
+
+.update-strip {
+  margin-bottom: 18px;
+  border: 1px solid rgba(0, 39, 118, 0.15);
+  border-radius: 8px;
+  padding: 11px 14px;
+  background: #eef3ff;
+  color: var(--brand-2);
+  font-size: 13px;
+  font-weight: 800;
 }
 
 .view {
@@ -378,7 +398,8 @@ tbody tr:hover {
   text-transform: uppercase;
 }
 
-select {
+select,
+.text-input {
   min-width: 260px;
   min-height: 42px;
   border: 1px solid var(--line);
@@ -388,6 +409,10 @@ select {
   color: var(--ink);
   font: inherit;
   font-weight: 700;
+}
+
+.text-input {
+  min-width: 280px;
 }
 
 .empty {
@@ -406,6 +431,130 @@ select {
   font-weight: 900;
 }
 
+.match-bets-board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(250px, 1fr));
+  gap: 14px;
+  align-items: start;
+}
+
+.match-bets-controls {
+  display: flex;
+  align-items: end;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+
+.match-bets-column {
+  min-width: 0;
+}
+
+.match-bets-column-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.match-bets-column-heading h3 {
+  margin: 0;
+  color: var(--brand-2);
+  font-size: 16px;
+}
+
+.match-bets-column-heading span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
+  min-height: 28px;
+  border-radius: 999px;
+  background: var(--surface-soft);
+  color: var(--brand-2);
+  font-weight: 900;
+}
+
+.match-bets-list {
+  display: grid;
+  gap: 10px;
+}
+
+.match-bets-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfff8;
+  overflow: hidden;
+}
+
+.match-bets-card summary {
+  display: grid;
+  gap: 7px;
+  padding: 12px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.match-bets-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.match-bets-card summary::after {
+  content: "Ver palpites";
+  color: var(--brand-2);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.match-bets-card[open] summary {
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+.match-bets-card[open] summary::after {
+  content: "Ocultar palpites";
+}
+
+.match-bets-card strong {
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.match-bets-meta,
+.match-bets-result {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.match-bets-result {
+  color: var(--brand-dark);
+}
+
+.match-bets-details {
+  overflow: auto;
+}
+
+.compact-table {
+  min-width: 100%;
+}
+
+.compact-table th,
+.compact-table td {
+  padding: 9px 10px;
+  white-space: nowrap;
+}
+
+.empty.compact {
+  padding: 18px 12px;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  background: #fbfcfb;
+}
+
 @media (max-width: 860px) {
   .topbar,
   .panel-heading {
@@ -418,12 +567,35 @@ select {
     justify-content: stretch;
   }
 
+  .tabs {
+    width: 100%;
+  }
+
+  .tab {
+    flex: 1 1 140px;
+  }
+
   .summary-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .prize-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .match-bets-board {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .match-bets-controls {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  select,
+  .text-input {
+    min-width: 0;
+    width: 100%;
   }
 }
 
@@ -441,6 +613,10 @@ select {
   }
 
   .match-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .match-bets-board {
     grid-template-columns: 1fr;
   }
 

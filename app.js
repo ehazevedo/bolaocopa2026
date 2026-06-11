@@ -1,15 +1,23 @@
 (function () {
+  const DISPLAY_TIME_ZONE = "America/Sao_Paulo";
   let data = window.BOLAO_DATA || { matches: [], participants: [], rules: {} };
   const publishedResults = window.BOLAO_RESULTS || {};
   const config = window.BOLAO_CONFIG || {};
   const isLocalHost = ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
   const isAdmin = isLocalHost;
   let results = { ...publishedResults };
+  let sheetLoadedAt = null;
+  const matchFilters = { search: "", group: "" };
 
   const tabs = document.querySelectorAll(".tab");
   const views = document.querySelectorAll(".view");
+  const lastUpdated = document.querySelector("#lastUpdated");
   const leaderboardBody = document.querySelector("#leaderboard tbody");
   const resultsGrid = document.querySelector("#resultsGrid");
+  const matchBetsBoard = document.querySelector("#matchBetsBoard");
+  const matchSearch = document.querySelector("#matchSearch");
+  const matchGroupFilter = document.querySelector("#matchGroupFilter");
+  const clearMatchFilters = document.querySelector("#clearMatchFilters");
   const participantSelect = document.querySelector("#participantSelect");
   const participantBetsBody = document.querySelector("#participantBets tbody");
   const statusMessage = document.querySelector("#statusMessage");
@@ -19,10 +27,22 @@
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
-      tabs.forEach((item) => item.classList.remove("active"));
-      views.forEach((view) => view.classList.remove("active"));
-      tab.classList.add("active");
-      document.getElementById(tab.dataset.tab).classList.add("active");
+      activateTab(tab.dataset.tab);
+    });
+
+    tab.addEventListener("keydown", (event) => {
+      const keys = ["ArrowLeft", "ArrowRight", "Home", "End"];
+      if (!keys.includes(event.key)) return;
+      event.preventDefault();
+      const currentIndex = Array.from(tabs).indexOf(tab);
+      const lastIndex = tabs.length - 1;
+      let nextIndex = currentIndex;
+      if (event.key === "ArrowLeft") nextIndex = currentIndex > 0 ? currentIndex - 1 : lastIndex;
+      if (event.key === "ArrowRight") nextIndex = currentIndex < lastIndex ? currentIndex + 1 : 0;
+      if (event.key === "Home") nextIndex = 0;
+      if (event.key === "End") nextIndex = lastIndex;
+      tabs[nextIndex].focus();
+      activateTab(tabs[nextIndex].dataset.tab);
     });
   });
 
@@ -37,15 +57,48 @@
   });
 
   participantSelect.addEventListener("change", renderParticipantBets);
+  matchSearch?.addEventListener("input", () => {
+    matchFilters.search = matchSearch.value.trim();
+    renderMatchBetsBoard();
+  });
+  matchGroupFilter?.addEventListener("change", () => {
+    matchFilters.group = matchGroupFilter.value;
+    renderMatchBetsBoard();
+  });
+  clearMatchFilters?.addEventListener("click", () => {
+    matchFilters.search = "";
+    matchFilters.group = "";
+    if (matchSearch) matchSearch.value = "";
+    if (matchGroupFilter) matchGroupFilter.value = "";
+    renderMatchBetsBoard();
+  });
 
+  activateTab("dashboard");
   renderAll();
   loadSheetResults();
 
+  function activateTab(tabId) {
+    tabs.forEach((item) => {
+      const isActive = item.dataset.tab === tabId;
+      item.classList.toggle("active", isActive);
+      item.setAttribute("aria-selected", String(isActive));
+      item.tabIndex = isActive ? 0 : -1;
+    });
+    views.forEach((view) => {
+      const isActive = view.id === tabId;
+      view.classList.toggle("active", isActive);
+      view.setAttribute("aria-hidden", String(!isActive));
+    });
+  }
+
   function renderAll() {
+    renderUpdateInfo();
     renderMetrics();
     renderPrizes();
     renderLeaderboard();
     renderResultsGrid();
+    renderMatchGroupFilter();
+    renderMatchBetsBoard();
     renderParticipantSelect();
     renderParticipantBets();
   }
@@ -82,6 +135,7 @@
     try {
       const sheetResults = await fetchGoogleSheetResults(config.googleSheetId, config.googleSheetGid || "0");
       results = sheetResults;
+      sheetLoadedAt = new Date();
       renderAll();
       showStatus(resultsStatusMessage, `Resultados carregados do Google Sheets: ${Object.keys(results).length} jogo(s).`, "success");
     } catch (error) {
@@ -186,10 +240,33 @@
     }
   }
 
+  function renderUpdateInfo() {
+    if (!lastUpdated) return;
+    const importedAt = data.generatedAt ? formatDateTime(data.generatedAt) : "sem registro";
+    const resultsInfo = sheetLoadedAt
+      ? `Resultados lidos do Google Sheets em ${formatDateTime(sheetLoadedAt.toISOString())}`
+      : config.googleSheetId
+        ? "Resultados conectados ao Google Sheets"
+        : "Resultados usando fallback publicado";
+    lastUpdated.textContent = `Palpites importados em ${importedAt}. ${resultsInfo}. Fuso: ${DISPLAY_TIME_ZONE}.`;
+  }
+
   function resultCode(g1, g2) {
     if (g1 > g2) return "H";
     if (g1 < g2) return "A";
     return "D";
+  }
+
+  function hasCompleteScore(value) {
+    return Boolean(value)
+      && value.g1 !== null
+      && value.g1 !== undefined
+      && value.g1 !== ""
+      && value.g2 !== null
+      && value.g2 !== undefined
+      && value.g2 !== ""
+      && Number.isFinite(Number(value.g1))
+      && Number.isFinite(Number(value.g2));
   }
 
   function matchResult(matchId) {
@@ -201,9 +278,13 @@
   }
 
   function scoreBet(bet, actual) {
-    if (!actual || !bet) return { points: 0, exact: false, simple: false };
-    const simple = resultCode(bet.g1, bet.g2) === resultCode(actual.g1, actual.g2);
-    const exact = bet.g1 === actual.g1 && bet.g2 === actual.g2;
+    if (!hasCompleteScore(actual) || !hasCompleteScore(bet)) return { points: 0, exact: false, simple: false };
+    const betG1 = Number(bet.g1);
+    const betG2 = Number(bet.g2);
+    const actualG1 = Number(actual.g1);
+    const actualG2 = Number(actual.g2);
+    const simple = resultCode(betG1, betG2) === resultCode(actualG1, actualG2);
+    const exact = betG1 === actualG1 && betG2 === actualG2;
     return {
       points: (simple ? data.rules.simpleResultPoints || 2 : 0) + (exact ? data.rules.exactScoreBonus || 3 : 0),
       exact,
@@ -221,7 +302,7 @@
     const phaseTotals = {};
 
     completed.forEach((match) => {
-      const bet = byMatch.get(match.id) || { matchId: match.id, g1: 0, g2: 0 };
+      const bet = byMatch.get(match.id) || null;
       const score = scoreBet(bet, matchResult(match.id));
       points += score.points;
       exact += score.exact ? 1 : 0;
@@ -337,9 +418,134 @@
         if (!isAdmin) return;
         renderMetrics();
         renderLeaderboard();
+        renderMatchBetsBoard();
         renderParticipantBets();
       });
     });
+  }
+
+  function renderMatchBetsBoard() {
+    if (!matchBetsBoard) return;
+    if (!data.matches.length) {
+      matchBetsBoard.innerHTML = `<div class="empty">Nenhum jogo importado ainda.</div>`;
+      return;
+    }
+
+    const categories = categorizeMatches(filteredMatches());
+    matchBetsBoard.innerHTML = categories
+      .map((category) => `
+        <section class="match-bets-column">
+          <div class="match-bets-column-heading">
+            <h3>${escapeHtml(category.title)}</h3>
+            <span>${category.matches.length}</span>
+          </div>
+          <div class="match-bets-list">
+            ${
+              category.matches.length
+                ? category.matches.map(renderMatchBetsCard).join("")
+                : `<div class="empty compact">${escapeHtml(category.emptyText)}</div>`
+            }
+          </div>
+        </section>
+      `)
+      .join("");
+  }
+
+  function renderMatchGroupFilter() {
+    if (!matchGroupFilter) return;
+    const selected = matchGroupFilter.value || matchFilters.group;
+    const groups = [...new Set(data.matches.map((match) => match.group).filter(Boolean))].sort((a, b) =>
+      a.localeCompare(b, "pt-BR"),
+    );
+    matchGroupFilter.innerHTML = [
+      `<option value="">Todos os grupos</option>`,
+      ...groups.map((group) => `<option value="${escapeHtml(group)}">Grupo ${escapeHtml(group)}</option>`),
+    ].join("");
+    if (groups.includes(selected)) {
+      matchGroupFilter.value = selected;
+      matchFilters.group = selected;
+    }
+  }
+
+  function filteredMatches() {
+    const search = normalizeText(matchFilters.search);
+    return data.matches.filter((match) => {
+      const matchesGroup = !matchFilters.group || match.group === matchFilters.group;
+      if (!matchesGroup) return false;
+      if (!search) return true;
+      const haystack = normalizeText(
+        `#${match.id} ${match.group || ""} ${formatDate(match.date)} ${match.team1} ${match.team2}`,
+      );
+      return haystack.includes(search);
+    });
+  }
+
+  function categorizeMatches(matches = data.matches) {
+    const today = getSaoPauloToday();
+    const groups = { today: [], next: [], future: [], past: [] };
+
+    matches.forEach((match) => {
+      const matchDate = parseLocalDate(match.date);
+      if (!matchDate) {
+        groups.future.push(match);
+        return;
+      }
+      const dayDelta = Math.round((matchDate - today) / 86400000);
+      if (dayDelta === 0) groups.today.push(match);
+      else if (dayDelta > 0 && dayDelta <= 3) groups.next.push(match);
+      else if (dayDelta > 3) groups.future.push(match);
+      else groups.past.push(match);
+    });
+
+    const byDateAsc = (a, b) => (a.date || "").localeCompare(b.date || "") || a.id - b.id;
+    const byDateDesc = (a, b) => (b.date || "").localeCompare(a.date || "") || a.id - b.id;
+    return [
+      { title: "Jogos do dia", emptyText: "Nenhum jogo hoje.", matches: groups.today.sort(byDateAsc) },
+      { title: "Próximos 3 dias", emptyText: "Nenhum jogo nos próximos 3 dias.", matches: groups.next.sort(byDateAsc) },
+      { title: "Jogos futuros", emptyText: "Nenhum jogo futuro.", matches: groups.future.sort(byDateAsc) },
+      { title: "Jogos passados", emptyText: "Nenhum jogo passado.", matches: groups.past.sort(byDateDesc) },
+    ];
+  }
+
+  function renderMatchBetsCard(match) {
+    const actual = matchResult(match.id);
+    const resultLabel = actual ? `${actual.g1} x ${actual.g2}` : "Sem resultado";
+    const betsByParticipant = data.participants
+      .map((participant) => {
+        const bet = participant.bets.find((item) => item.matchId === match.id);
+        const scored = scoreBet(bet, actual);
+        const pointClass = scored.exact ? "points-exact" : scored.points > 0 ? "points-good" : "";
+        return `
+          <tr>
+            <td>${escapeHtml(participant.name)}</td>
+            <td>${formatScore(bet)}</td>
+            <td class="${pointClass}">${actual ? scored.points : "-"}</td>
+          </tr>
+        `;
+      })
+      .join("");
+
+    return `
+      <details class="match-bets-card">
+        <summary>
+          <span class="match-bets-meta">#${match.id} · Grupo ${escapeHtml(match.group || "-")} · ${escapeHtml(formatDate(match.date))}</span>
+          <strong>${escapeHtml(match.team1)} x ${escapeHtml(match.team2)}</strong>
+          <span class="match-bets-result">${escapeHtml(resultLabel)}</span>
+        </summary>
+        <div class="match-bets-details">
+          <table class="compact-table">
+            <thead>
+              <tr>
+                <th>Participante</th>
+                <th>Palpite</th>
+                <th>Pontos</th>
+              </tr>
+            </thead>
+            <tbody>${betsByParticipant}</tbody>
+          </table>
+        </div>
+      </details>
+    `;
   }
 
   function renderParticipantSelect() {
@@ -362,7 +568,7 @@
     const bets = new Map(participant.bets.map((bet) => [bet.matchId, bet]));
     participantBetsBody.innerHTML = data.matches
       .map((match) => {
-        const bet = bets.get(match.id) || { g1: 0, g2: 0 };
+        const bet = bets.get(match.id) || null;
         const actual = matchResult(match.id);
         const scored = scoreBet(bet, actual);
         const pointClass = scored.exact ? "points-exact" : scored.points > 0 ? "points-good" : "";
@@ -371,7 +577,7 @@
             <td>${match.id}</td>
             <td>${escapeHtml(match.group || "-")}</td>
             <td>${escapeHtml(match.team1)} x ${escapeHtml(match.team2)}</td>
-            <td>${bet.g1} x ${bet.g2}</td>
+            <td>${formatScore(bet)}</td>
             <td>${actual ? `${actual.g1} x ${actual.g2}` : "-"}</td>
             <td class="${pointClass}">${scored.points}</td>
           </tr>
@@ -384,6 +590,46 @@
     if (!value) return "";
     const [year, month, day] = value.split("-");
     return `${day}/${month}/${year}`;
+  }
+
+  function formatScore(value) {
+    if (!hasCompleteScore(value)) return "-";
+    return `${Number(value.g1)} x ${Number(value.g2)}`;
+  }
+
+  function formatDateTime(value) {
+    const date = new Date(value);
+    if (Number.isNaN(date.getTime())) return "sem registro";
+    return new Intl.DateTimeFormat("pt-BR", {
+      dateStyle: "short",
+      timeStyle: "short",
+      timeZone: DISPLAY_TIME_ZONE,
+    }).format(date);
+  }
+
+  function parseLocalDate(value) {
+    if (!value) return null;
+    const [year, month, day] = value.split("-").map(Number);
+    if (!year || !month || !day) return null;
+    return new Date(year, month - 1, day);
+  }
+
+  function getSaoPauloToday() {
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: DISPLAY_TIME_ZONE,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }).formatToParts(new Date());
+    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    return new Date(Number(values.year), Number(values.month) - 1, Number(values.day));
+  }
+
+  function normalizeText(value) {
+    return String(value || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
   }
 
   function escapeHtml(value) {

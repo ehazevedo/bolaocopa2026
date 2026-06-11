@@ -4,7 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bolão Copa do Mundo FIFA 2026</title>
-    <link rel="stylesheet" href="styles.css">
+    <script>
+      window.BOLAO_ASSET_VERSION = String(Date.now());
+      const stylesheet = document.createElement("link");
+      stylesheet.rel = "stylesheet";
+      stylesheet.href = `styles.css?v=${window.BOLAO_ASSET_VERSION}`;
+      document.head.appendChild(stylesheet);
+    </script>
   </head>
   <body>
     <header class="topbar">
@@ -12,15 +18,16 @@
         <p class="eyebrow">Bolão Copa do Mundo FIFA 2026</p>
         <h1>Dashboard de Pontuação</h1>
       </div>
-      <nav class="tabs" aria-label="Abas principais">
-        <button class="tab active" data-tab="dashboard">Classificação</button>
-        <button class="tab" data-tab="results">Placar final</button>
-        <button class="tab" data-tab="bets">Palpites</button>
+      <nav class="tabs" aria-label="Abas principais" role="tablist">
+        <button id="tab-dashboard" class="tab active" type="button" role="tab" aria-selected="true" aria-controls="dashboard" data-tab="dashboard">Classificação</button>
+        <button id="tab-results" class="tab" type="button" role="tab" aria-selected="false" aria-controls="results" data-tab="results">Placar final</button>
+        <button id="tab-games" class="tab" type="button" role="tab" aria-selected="false" aria-controls="games" data-tab="games">Jogos</button>
+        <button id="tab-bets" class="tab" type="button" role="tab" aria-selected="false" aria-controls="bets" data-tab="bets">Palpites</button>
       </nav>
     </header>
 
     <main>
-      <section id="dashboard" class="view active">
+      <section id="dashboard" class="view active" role="tabpanel" aria-labelledby="tab-dashboard">
         <div class="summary-grid">
           <article class="metric">
             <span>Participantes</span>
@@ -103,9 +110,13 @@
             <span>Fase de grupos: 35% do total</span>
           </div>
         </section>
+
+        <section class="update-strip" aria-label="Atualização do dashboard">
+          <span id="lastUpdated">Carregando atualizações...</span>
+        </section>
       </section>
 
-      <section id="results" class="view">
+      <section id="results" class="view" role="tabpanel" aria-labelledby="tab-results">
         <section class="panel">
           <div class="panel-heading">
             <div>
@@ -118,7 +129,30 @@
         </section>
       </section>
 
-      <section id="bets" class="view">
+      <section id="games" class="view" role="tabpanel" aria-labelledby="tab-games">
+        <section class="panel">
+          <div class="panel-heading">
+            <div>
+              <h2>Palpites por Jogo</h2>
+              <p>Clique em um jogo para comparar os palpites de todos os participantes.</p>
+            </div>
+          </div>
+          <div class="match-bets-controls" aria-label="Filtros de jogos">
+            <label class="select-label">
+              Buscar jogo
+              <input id="matchSearch" class="text-input" type="search" placeholder="Seleção, grupo ou número" autocomplete="off">
+            </label>
+            <label class="select-label">
+              Grupo
+              <select id="matchGroupFilter"></select>
+            </label>
+            <button id="clearMatchFilters" class="ghost-button" type="button">Limpar filtros</button>
+          </div>
+          <div id="matchBetsBoard" class="match-bets-board"></div>
+        </section>
+      </section>
+
+      <section id="bets" class="view" role="tabpanel" aria-labelledby="tab-bets">
         <section class="panel">
           <div class="panel-heading">
             <div>
@@ -153,9 +187,22 @@
       </section>
     </main>
 
-    <script src="data/bolao-data.js"></script>
-    <script src="data/results.js"></script>
-    <script src="data/config.js"></script>
-    <script src="app.js"></script>
+    <script>
+      (function () {
+        const version = window.BOLAO_ASSET_VERSION || String(Date.now());
+        const scripts = ["data/bolao-data.js", "data/results.js", "data/config.js", "app.js"];
+
+        function loadNext(index) {
+          if (index >= scripts.length) return;
+          const script = document.createElement("script");
+          script.src = `${scripts[index]}?v=${version}`;
+          script.onload = () => loadNext(index + 1);
+          script.onerror = () => loadNext(index + 1);
+          document.body.appendChild(script);
+        }
+
+        loadNext(0);
+      })();
+    </script>
   </body>
 </html>
