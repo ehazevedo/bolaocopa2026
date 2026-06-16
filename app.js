@@ -9,6 +9,7 @@
   let sheetLoadedAt = null;
   const matchFilters = { search: "", group: "" };
   const leaderboardFilters = { type: "all" };
+  let expandedParticipantId = "";
 
   const tabs = document.querySelectorAll(".tab");
   const views = document.querySelectorAll(".view");
@@ -61,6 +62,14 @@
       });
       renderLeaderboard();
     });
+  });
+
+  leaderboardList?.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-expand-participant]");
+    if (!button) return;
+    const participantId = button.dataset.expandParticipant || "";
+    expandedParticipantId = expandedParticipantId === participantId ? "" : participantId;
+    renderLeaderboard();
   });
 
   participantSelect.addEventListener("change", renderParticipantBets);
@@ -383,6 +392,9 @@
     if (leaderboardFilters.type === "up") {
       rows = rows.filter((row) => row.movement.change > 0);
     }
+    if (!rows.some((row) => row.participant.id === expandedParticipantId)) {
+      expandedParticipantId = "";
+    }
 
     if (!rows.length) {
       leaderboardList.innerHTML = `<div class="empty">Nenhuma classificação encontrada para esse filtro.</div>`;
@@ -392,22 +404,31 @@
     leaderboardList.innerHTML = rows
       .map((row) => {
         const topClass = row.rank <= 3 ? ` top-${row.rank}` : "";
+        const isExpanded = row.participant.id === expandedParticipantId;
+        const chartId = `ranking-evolution-${safeId(row.participant.id)}`;
         return `
-          <article class="leaderboard-card${topClass}">
-            <div class="leaderboard-position">
-              <span class="rank-badge">${row.rank}</span>
-            </div>
-            <div class="leaderboard-person">
-              <strong>${escapeHtml(row.participant.name)}</strong>
-              <span>${row.stats.exact} placar(es) exato(s) · ${row.stats.simple} acerto(s) de vencedor · ${row.stats.scoredMatches} jogo(s) pontuado(s)</span>
-            </div>
-            <div class="leaderboard-movement">
-              ${renderMovement(row.movement)}
-            </div>
-            <div class="leaderboard-points">
-              <strong>${row.stats.points}</strong>
-              <span>pts</span>
-            </div>
+          <article class="leaderboard-card${topClass}${isExpanded ? " expanded" : ""}">
+            <button class="leaderboard-card-button" type="button"
+              data-expand-participant="${escapeHtml(row.participant.id)}"
+              aria-expanded="${String(isExpanded)}"
+              aria-controls="${chartId}">
+              <span class="leaderboard-position">
+                <span class="rank-badge">${row.rank}</span>
+              </span>
+              <span class="leaderboard-person">
+                <strong>${escapeHtml(row.participant.name)}</strong>
+                <span>${row.stats.exact} placar(es) exato(s) · ${row.stats.simple} acerto(s) de vencedor · ${row.stats.scoredMatches} jogo(s) pontuado(s)</span>
+              </span>
+              <span class="leaderboard-movement">
+                ${renderMovement(row.movement)}
+              </span>
+              <span class="leaderboard-points">
+                <strong>${row.stats.points}</strong>
+                <span>pts</span>
+              </span>
+              <span class="leaderboard-expand-icon" aria-hidden="true">${isExpanded ? "▲" : "▼"}</span>
+            </button>
+            ${isExpanded ? renderRankingEvolution(row.participant, row.rank, chartId) : ""}
           </article>
         `;
       })
@@ -453,6 +474,115 @@
       return `<span class="movement-badge movement-down">▼ ${movement.change} hoje</span>`;
     }
     return `<span class="movement-badge movement-flat">= estável</span>`;
+  }
+
+  function renderRankingEvolution(participant, currentRank, chartId) {
+    const series = rankingEvolution(participant.id);
+    if (series.length < 2) {
+      return `
+        <div id="${chartId}" class="ranking-evolution">
+          <div class="ranking-evolution-heading">
+            <span>Evolução no ranking</span>
+          </div>
+          <div class="empty compact">Ainda não há dias suficientes com resultado para desenhar a evolução.</div>
+        </div>
+      `;
+    }
+
+    const startRank = series[0].rank;
+    const current = series.at(-1);
+    return `
+      <div id="${chartId}" class="ranking-evolution">
+        <div class="ranking-evolution-heading">
+          <span>Evolução no ranking por dia</span>
+          <strong>Atual: ${ordinal(currentRank)}</strong>
+        </div>
+        ${renderRankingChart(series, chartId)}
+        <div class="ranking-chart-legend" aria-label="Resumo da evolução">
+          <span><i class="legend-start"></i>Início: ${ordinal(startRank)}</span>
+          <span><i class="legend-current"></i>Atual: ${ordinal(current.rank)}</span>
+        </div>
+      </div>
+    `;
+  }
+
+  function rankingEvolution(participantId) {
+    return completedDates().map((date) => {
+      const rows = leaderboardRows((match) => (match.date || "") <= date);
+      const row = rows.find((item) => item.participant.id === participantId);
+      return {
+        date,
+        label: formatShortDate(date),
+        rank: row?.rank || data.participants.length,
+      };
+    });
+  }
+
+  function completedDates() {
+    return [...new Set(
+      data.matches
+        .filter((match) => matchResult(match.id) && match.date)
+        .map((match) => match.date),
+    )].sort();
+  }
+
+  function renderRankingChart(series, chartId) {
+    const width = 720;
+    const height = 250;
+    const padding = { top: 26, right: 28, bottom: 42, left: 48 };
+    const innerWidth = width - padding.left - padding.right;
+    const innerHeight = height - padding.top - padding.bottom;
+    const maxRank = Math.max(data.participants.length, ...series.map((item) => item.rank), 1);
+    const yTicks = rankTicks(maxRank);
+    const x = (index) => padding.left + (series.length === 1 ? innerWidth / 2 : (index / (series.length - 1)) * innerWidth);
+    const y = (rank) => padding.top + ((rank - 1) / Math.max(maxRank - 1, 1)) * innerHeight;
+    const points = series.map((item, index) => ({ ...item, x: x(index), y: y(item.rank) }));
+    const pointList = points.map((point) => `${point.x.toFixed(1)},${point.y.toFixed(1)}`).join(" ");
+    const areaList = [
+      `${padding.left},${padding.top + innerHeight}`,
+      pointList,
+      `${padding.left + innerWidth},${padding.top + innerHeight}`,
+    ].join(" ");
+    const labelIndexes = chartLabelIndexes(series.length);
+    const current = points.at(-1);
+    const titleId = `${chartId}-title`;
+    const descId = `${chartId}-desc`;
+
+    return `
+      <div class="ranking-chart-wrap">
+        <svg class="ranking-chart" viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="${titleId} ${descId}">
+          <title id="${titleId}">Evolução diária da posição no ranking</title>
+          <desc id="${descId}">Linha com a posição no ranking ao final de cada dia com jogos finalizados.</desc>
+          <rect class="ranking-chart-bg" x="0" y="0" width="${width}" height="${height}" rx="8"></rect>
+          ${yTicks.map((tick) => `
+            <line class="ranking-chart-grid" x1="${padding.left}" x2="${padding.left + innerWidth}" y1="${y(tick)}" y2="${y(tick)}"></line>
+            <text class="ranking-chart-y-label" x="${padding.left - 12}" y="${y(tick) + 4}" text-anchor="end">${ordinal(tick)}</text>
+          `).join("")}
+          ${labelIndexes.map((index) => `
+            <line class="ranking-chart-grid soft" x1="${x(index)}" x2="${x(index)}" y1="${padding.top}" y2="${padding.top + innerHeight}"></line>
+            <text class="ranking-chart-x-label" x="${x(index)}" y="${height - 14}" text-anchor="middle">${escapeHtml(points[index].label)}</text>
+          `).join("")}
+          <polygon class="ranking-chart-area" points="${areaList}"></polygon>
+          <polyline class="ranking-chart-line" points="${pointList}"></polyline>
+          ${points.map((point, index) => `
+            <circle class="ranking-chart-point${index === points.length - 1 ? " current" : ""}" cx="${point.x}" cy="${point.y}" r="${index === points.length - 1 ? 6 : 4}">
+              <title>${escapeHtml(point.label)}: ${ordinal(point.rank)}</title>
+            </circle>
+          `).join("")}
+          <circle class="ranking-chart-current-ring" cx="${current.x}" cy="${current.y}" r="14"></circle>
+        </svg>
+      </div>
+    `;
+  }
+
+  function rankTicks(maxRank) {
+    const middle = Math.max(1, Math.ceil(maxRank / 2));
+    return [...new Set([1, middle, maxRank])].sort((a, b) => a - b);
+  }
+
+  function chartLabelIndexes(length) {
+    if (length <= 4) return Array.from({ length }, (_, index) => index);
+    return [...new Set([0, Math.floor((length - 1) / 3), Math.floor(((length - 1) * 2) / 3), length - 1])];
   }
 
   function renderMatchBetsBoard() {
@@ -623,6 +753,12 @@
     return `${day}/${month}/${year}`;
   }
 
+  function formatShortDate(value) {
+    if (!value) return "";
+    const [, month, day] = value.split("-");
+    return `${day}/${month}`;
+  }
+
   function formatScore(value) {
     if (!hasCompleteScore(value)) return "-";
     return `${Number(value.g1)} x ${Number(value.g2)}`;
@@ -678,5 +814,19 @@
       currency: "BRL",
       maximumFractionDigits: 0,
     });
+  }
+
+  function safeId(value) {
+    return String(value || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[^a-zA-Z0-9_-]/g, "-")
+      .replace(/-+/g, "-")
+      .replace(/^-|-$/g, "")
+      .toLowerCase();
+  }
+
+  function ordinal(value) {
+    return `${Number(value || 0)}º`;
   }
 })();
