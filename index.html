@@ -20,7 +20,6 @@
       </div>
       <nav class="tabs" aria-label="Abas principais" role="tablist">
         <button id="tab-dashboard" class="tab active" type="button" role="tab" aria-selected="true" aria-controls="dashboard" data-tab="dashboard">Classificação</button>
-        <button id="tab-results" class="tab" type="button" role="tab" aria-selected="false" aria-controls="results" data-tab="results">Placar final</button>
         <button id="tab-games" class="tab" type="button" role="tab" aria-selected="false" aria-controls="games" data-tab="games">Jogos</button>
         <button id="tab-bets" class="tab" type="button" role="tab" aria-selected="false" aria-controls="bets" data-tab="bets">Palpites</button>
       </nav>
@@ -81,7 +80,6 @@
               <h2>Classificação Geral</h2>
               <p>Ranking por pontos, acertos e variação diária de posição.</p>
             </div>
-            <button id="resetResults" class="ghost-button admin-only">Limpar resultados</button>
           </div>
           <div class="leaderboard-controls" aria-label="Filtros da classificação">
             <label class="select-label leaderboard-search">
@@ -114,19 +112,6 @@
 
         <section class="update-strip" aria-label="Atualização do dashboard">
           <span id="lastUpdated">Carregando atualizações...</span>
-        </section>
-      </section>
-
-      <section id="results" class="view" role="tabpanel" aria-labelledby="tab-results">
-        <section class="panel">
-          <div class="panel-heading">
-            <div>
-              <h2>Placar Final dos Jogos</h2>
-              <p id="resultsHelpText">Resultados oficiais considerados pelo regulamento do bolão.</p>
-            </div>
-          </div>
-          <div id="resultsStatusMessage" class="status-message" role="status" aria-live="polite"></div>
-          <div id="resultsGrid" class="match-grid"></div>
         </section>
       </section>
 

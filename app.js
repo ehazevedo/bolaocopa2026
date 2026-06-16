@@ -16,7 +16,6 @@
   const leaderboardList = document.querySelector("#leaderboard");
   const leaderboardSearch = document.querySelector("#leaderboardSearch");
   const leaderboardFilterButtons = document.querySelectorAll("[data-leaderboard-filter]");
-  const resultsGrid = document.querySelector("#resultsGrid");
   const matchBetsBoard = document.querySelector("#matchBetsBoard");
   const matchSearch = document.querySelector("#matchSearch");
   const matchGroupFilter = document.querySelector("#matchGroupFilter");
@@ -24,7 +23,6 @@
   const participantSelect = document.querySelector("#participantSelect");
   const participantBetsBody = document.querySelector("#participantBets tbody");
   const statusMessage = document.querySelector("#statusMessage");
-  const resultsStatusMessage = document.querySelector("#resultsStatusMessage");
 
   document.body.classList.toggle("admin-mode", isAdmin);
 
@@ -47,12 +45,6 @@
       tabs[nextIndex].focus();
       activateTab(tabs[nextIndex].dataset.tab);
     });
-  });
-
-  document.getElementById("resetResults").addEventListener("click", () => {
-    if (!confirm("Limpar todos os resultados digitados neste navegador?")) return;
-    Object.keys(results).forEach((key) => delete results[key]);
-    renderAll();
   });
 
   document.getElementById("refreshBets").addEventListener("click", async () => {
@@ -117,7 +109,6 @@
     renderMetrics();
     renderPrizes();
     renderLeaderboard();
-    renderResultsGrid();
     renderMatchGroupFilter();
     renderMatchBetsBoard();
     renderParticipantSelect();
@@ -158,9 +149,8 @@
       results = sheetResults;
       sheetLoadedAt = new Date();
       renderAll();
-      showStatus(resultsStatusMessage, `Resultados carregados do Google Sheets: ${Object.keys(results).length} jogo(s).`, "success");
     } catch (error) {
-      showStatus(resultsStatusMessage, `Não consegui carregar o Google Sheets; usando fallback publicado. Detalhe: ${error.message}`, "error");
+      console.warn(`Não consegui carregar o Google Sheets; usando fallback publicado. Detalhe: ${error.message}`);
     }
   }
 
@@ -473,48 +463,6 @@
       return `<span class="movement-badge movement-down">▼ ${movement.change} hoje</span>`;
     }
     return `<span class="movement-badge movement-flat">= estável</span>`;
-  }
-
-  function renderResultsGrid() {
-    if (!data.matches.length) {
-      resultsGrid.innerHTML = `<div class="empty">Nenhum jogo importado ainda.</div>`;
-      return;
-    }
-
-    resultsGrid.innerHTML = data.matches
-      .map((match) => {
-        const actual = matchResult(match.id) || { g1: "", g2: "" };
-        return `
-          <article class="match-card">
-            <div class="match-meta">
-              <span>#${match.id} · Grupo ${escapeHtml(match.group || "-")}</span>
-              <span>${escapeHtml(formatDate(match.date))}</span>
-            </div>
-            <div class="score-row">
-              <strong class="team-right">${escapeHtml(match.team1)}</strong>
-              <input class="score-input" type="number" min="0" inputmode="numeric"
-                value="${actual.g1}" aria-label="${escapeHtml(match.team1)}"
-                data-match="${match.id}" data-side="g1" ${isAdmin ? "" : "disabled"}>
-              <span class="versus">x</span>
-              <input class="score-input" type="number" min="0" inputmode="numeric"
-                value="${actual.g2}" aria-label="${escapeHtml(match.team2)}"
-                data-match="${match.id}" data-side="g2" ${isAdmin ? "" : "disabled"}>
-              <strong>${escapeHtml(match.team2)}</strong>
-            </div>
-          </article>
-        `;
-      })
-      .join("");
-
-    resultsGrid.querySelectorAll("input").forEach((input) => {
-      input.addEventListener("input", () => {
-        if (!isAdmin) return;
-        renderMetrics();
-        renderLeaderboard();
-        renderMatchBetsBoard();
-        renderParticipantBets();
-      });
-    });
   }
 
   function renderMatchBetsBoard() {
