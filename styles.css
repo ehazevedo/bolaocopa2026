@@ -272,14 +272,10 @@ tbody tr:hover {
 .leaderboard-controls {
   display: flex;
   align-items: end;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 12px;
   margin-bottom: 16px;
   flex-wrap: wrap;
-}
-
-.leaderboard-search {
-  flex: 1 1 280px;
 }
 
 .segmented-control {
@@ -759,8 +755,7 @@ select,
   }
 
   .leaderboard-controls {
-    align-items: stretch;
-    flex-direction: column;
+    justify-content: stretch;
   }
 
   .segmented-control {

@@ -8,13 +8,12 @@
   let results = { ...publishedResults };
   let sheetLoadedAt = null;
   const matchFilters = { search: "", group: "" };
-  const leaderboardFilters = { search: "", type: "all" };
+  const leaderboardFilters = { type: "all" };
 
   const tabs = document.querySelectorAll(".tab");
   const views = document.querySelectorAll(".view");
   const lastUpdated = document.querySelector("#lastUpdated");
   const leaderboardList = document.querySelector("#leaderboard");
-  const leaderboardSearch = document.querySelector("#leaderboardSearch");
   const leaderboardFilterButtons = document.querySelectorAll("[data-leaderboard-filter]");
   const matchBetsBoard = document.querySelector("#matchBetsBoard");
   const matchSearch = document.querySelector("#matchSearch");
@@ -49,11 +48,6 @@
 
   document.getElementById("refreshBets").addEventListener("click", async () => {
     await refreshBetsFromFolder();
-  });
-
-  leaderboardSearch?.addEventListener("input", () => {
-    leaderboardFilters.search = leaderboardSearch.value.trim();
-    renderLeaderboard();
   });
 
   leaderboardFilterButtons.forEach((button) => {
@@ -383,10 +377,6 @@
       movement: movementByParticipant.get(row.participant.id) || { change: 0, hasComparison: false },
     }));
 
-    const search = normalizeText(leaderboardFilters.search);
-    if (search) {
-      rows = rows.filter((row) => normalizeText(row.participant.name).includes(search));
-    }
     if (leaderboardFilters.type === "top3") {
       rows = rows.filter((row) => row.rank <= 3);
     }
