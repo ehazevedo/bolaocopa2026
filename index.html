@@ -79,25 +79,26 @@
           <div class="panel-heading">
             <div>
               <h2>Classificação Geral</h2>
-              <p>Pontos brutos por acertos e pontuação ponderada por etapa.</p>
+              <p>Ranking por pontos, acertos e variação diária de posição.</p>
             </div>
             <button id="resetResults" class="ghost-button admin-only">Limpar resultados</button>
           </div>
-          <div class="table-wrap">
-            <table id="leaderboard">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Participante</th>
-                  <th>Pontos</th>
-                  <th>Ponderado</th>
-                  <th>Exatos</th>
-                  <th>Resultado</th>
-                  <th>Jogos pontuados</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
+          <div class="leaderboard-controls" aria-label="Filtros da classificação">
+            <label class="select-label leaderboard-search">
+              Buscar participante
+              <input id="leaderboardSearch" class="text-input" type="search" placeholder="Nome do participante" autocomplete="off">
+            </label>
+            <div class="segmented-control" role="group" aria-label="Filtro de classificação">
+              <button class="segment active" type="button" data-leaderboard-filter="all">Todos</button>
+              <button class="segment" type="button" data-leaderboard-filter="top3">Top 3</button>
+              <button class="segment" type="button" data-leaderboard-filter="up">Subiram hoje</button>
+            </div>
+          </div>
+          <div id="leaderboard" class="leaderboard-list" aria-live="polite"></div>
+          <div class="movement-legend" aria-label="Legenda de variação diária">
+            <span><strong class="movement-up">▲</strong> subiu posições no dia</span>
+            <span><strong class="movement-down">▼</strong> caiu posições no dia</span>
+            <span><strong class="movement-flat">=</strong> manteve a posição</span>
           </div>
         </section>
 

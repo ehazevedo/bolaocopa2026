@@ -8,11 +8,14 @@
   let results = { ...publishedResults };
   let sheetLoadedAt = null;
   const matchFilters = { search: "", group: "" };
+  const leaderboardFilters = { search: "", type: "all" };
 
   const tabs = document.querySelectorAll(".tab");
   const views = document.querySelectorAll(".view");
   const lastUpdated = document.querySelector("#lastUpdated");
-  const leaderboardBody = document.querySelector("#leaderboard tbody");
+  const leaderboardList = document.querySelector("#leaderboard");
+  const leaderboardSearch = document.querySelector("#leaderboardSearch");
+  const leaderboardFilterButtons = document.querySelectorAll("[data-leaderboard-filter]");
   const resultsGrid = document.querySelector("#resultsGrid");
   const matchBetsBoard = document.querySelector("#matchBetsBoard");
   const matchSearch = document.querySelector("#matchSearch");
@@ -54,6 +57,24 @@
 
   document.getElementById("refreshBets").addEventListener("click", async () => {
     await refreshBetsFromFolder();
+  });
+
+  leaderboardSearch?.addEventListener("input", () => {
+    leaderboardFilters.search = leaderboardSearch.value.trim();
+    renderLeaderboard();
+  });
+
+  leaderboardFilterButtons.forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.classList.contains("active")));
+    button.addEventListener("click", () => {
+      leaderboardFilters.type = button.dataset.leaderboardFilter || "all";
+      leaderboardFilterButtons.forEach((item) => {
+        const isActive = item === button;
+        item.classList.toggle("active", isActive);
+        item.setAttribute("aria-pressed", String(isActive));
+      });
+      renderLeaderboard();
+    });
   });
 
   participantSelect.addEventListener("change", renderParticipantBets);
@@ -292,9 +313,9 @@
     };
   }
 
-  function participantStats(participant) {
+  function participantStats(participant, matchPredicate = () => true) {
     const byMatch = new Map(participant.bets.map((bet) => [bet.matchId, bet]));
-    const completed = data.matches.filter((match) => matchResult(match.id));
+    const completed = data.matches.filter((match) => matchResult(match.id) && matchPredicate(match));
     let points = 0;
     let exact = 0;
     let simple = 0;
@@ -321,15 +342,27 @@
     return { points, weighted, exact, simple, scoredMatches };
   }
 
-  function leaderboardRows() {
-    return data.participants
-      .map((participant) => ({ participant, stats: participantStats(participant) }))
+  function leaderboardRows(matchPredicate = () => true) {
+    const rows = data.participants
+      .map((participant) => ({ participant, stats: participantStats(participant, matchPredicate) }))
       .sort((a, b) => {
         if (b.stats.weighted !== a.stats.weighted) return b.stats.weighted - a.stats.weighted;
         if (b.stats.points !== a.stats.points) return b.stats.points - a.stats.points;
         if (b.stats.exact !== a.stats.exact) return b.stats.exact - a.stats.exact;
         return a.participant.name.localeCompare(b.participant.name, "pt-BR");
       });
+    return applyRanks(rows);
+  }
+
+  function applyRanks(rows) {
+    let previousKey = null;
+    let rank = 0;
+    return rows.map((row, index) => {
+      const key = `${row.stats.weighted.toFixed(8)}|${row.stats.points}|${row.stats.exact}`;
+      if (key !== previousKey) rank = index + 1;
+      previousKey = key;
+      return { ...row, rank };
+    });
   }
 
   function renderMetrics() {
@@ -354,32 +387,92 @@
   }
 
   function renderLeaderboard() {
-    const rows = leaderboardRows();
+    const movementByParticipant = dailyMovementByParticipant();
+    let rows = leaderboardRows().map((row) => ({
+      ...row,
+      movement: movementByParticipant.get(row.participant.id) || { change: 0, hasComparison: false },
+    }));
+
+    const search = normalizeText(leaderboardFilters.search);
+    if (search) {
+      rows = rows.filter((row) => normalizeText(row.participant.name).includes(search));
+    }
+    if (leaderboardFilters.type === "top3") {
+      rows = rows.filter((row) => row.rank <= 3);
+    }
+    if (leaderboardFilters.type === "up") {
+      rows = rows.filter((row) => row.movement.change > 0);
+    }
+
     if (!rows.length) {
-      leaderboardBody.innerHTML = `<tr><td colspan="7" class="empty">Nenhuma aposta importada ainda.</td></tr>`;
+      leaderboardList.innerHTML = `<div class="empty">Nenhuma classificação encontrada para esse filtro.</div>`;
       return;
     }
 
-    let previousKey = null;
-    let rank = 0;
-    leaderboardBody.innerHTML = rows
-      .map((row, index) => {
-        const key = `${row.stats.weighted.toFixed(8)}|${row.stats.points}|${row.stats.exact}`;
-        if (key !== previousKey) rank = index + 1;
-        previousKey = key;
+    leaderboardList.innerHTML = rows
+      .map((row) => {
+        const topClass = row.rank <= 3 ? ` top-${row.rank}` : "";
         return `
-          <tr>
-            <td><span class="rank-badge">${rank}</span></td>
-            <td><strong>${escapeHtml(row.participant.name)}</strong></td>
-            <td>${row.stats.points}</td>
-            <td>${row.stats.weighted.toFixed(2)}</td>
-            <td>${row.stats.exact}</td>
-            <td>${row.stats.simple}</td>
-            <td>${row.stats.scoredMatches}</td>
-          </tr>
+          <article class="leaderboard-card${topClass}">
+            <div class="leaderboard-position">
+              <span class="rank-badge">${row.rank}</span>
+            </div>
+            <div class="leaderboard-person">
+              <strong>${escapeHtml(row.participant.name)}</strong>
+              <span>${row.stats.exact} placar(es) exato(s) · ${row.stats.simple} acerto(s) de vencedor · ${row.stats.scoredMatches} jogo(s) pontuado(s)</span>
+            </div>
+            <div class="leaderboard-movement">
+              ${renderMovement(row.movement)}
+            </div>
+            <div class="leaderboard-points">
+              <strong>${row.stats.points}</strong>
+              <span>pts</span>
+            </div>
+          </article>
         `;
       })
       .join("");
+  }
+
+  function dailyMovementByParticipant() {
+    const latestDate = latestCompletedMatchDate();
+    if (!latestDate) return new Map();
+
+    const currentRows = leaderboardRows();
+    const previousRows = leaderboardRows((match) => (match.date || "") < latestDate);
+    if (!previousRows.some((row) => row.stats.points > 0)) {
+      return new Map(currentRows.map((row) => [row.participant.id, { change: 0, hasComparison: false }]));
+    }
+
+    const previousRankById = new Map(previousRows.map((row) => [row.participant.id, row.rank]));
+    return new Map(
+      currentRows.map((row) => {
+        const previousRank = previousRankById.get(row.participant.id);
+        const change = Number.isInteger(previousRank) ? previousRank - row.rank : 0;
+        return [row.participant.id, { change, hasComparison: Number.isInteger(previousRank) }];
+      }),
+    );
+  }
+
+  function latestCompletedMatchDate() {
+    return data.matches
+      .filter((match) => matchResult(match.id) && match.date)
+      .map((match) => match.date)
+      .sort()
+      .at(-1);
+  }
+
+  function renderMovement(movement) {
+    if (!movement?.hasComparison) {
+      return `<span class="movement-badge movement-flat">= sem dia anterior</span>`;
+    }
+    if (movement.change > 0) {
+      return `<span class="movement-badge movement-up">▲ +${movement.change} hoje</span>`;
+    }
+    if (movement.change < 0) {
+      return `<span class="movement-badge movement-down">▼ ${movement.change} hoje</span>`;
+    }
+    return `<span class="movement-badge movement-flat">= estável</span>`;
   }
 
   function renderResultsGrid() {
