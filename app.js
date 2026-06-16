@@ -428,7 +428,7 @@
               </span>
               <span class="leaderboard-expand-icon" aria-hidden="true">${isExpanded ? "▲" : "▼"}</span>
             </button>
-            ${isExpanded ? renderRankingEvolution(row.participant, row.rank, chartId) : ""}
+            ${isExpanded ? renderRankingEvolution(row.participant, chartId) : ""}
           </article>
         `;
       })
@@ -436,10 +436,10 @@
   }
 
   function dailyMovementByParticipant() {
-    const latestDate = latestCompletedMatchDate();
+    const latestDate = latestDailyCompletedMatchDate();
     if (!latestDate) return new Map();
 
-    const currentRows = leaderboardRows();
+    const currentRows = leaderboardRows((match) => (match.date || "") <= latestDate);
     const previousRows = leaderboardRows((match) => (match.date || "") < latestDate);
     if (!previousRows.some((row) => row.stats.points > 0)) {
       return new Map(currentRows.map((row) => [row.participant.id, { change: 0, hasComparison: false }]));
@@ -455,12 +455,8 @@
     );
   }
 
-  function latestCompletedMatchDate() {
-    return data.matches
-      .filter((match) => matchResult(match.id) && match.date)
-      .map((match) => match.date)
-      .sort()
-      .at(-1);
+  function latestDailyCompletedMatchDate() {
+    return completedDates().at(-1);
   }
 
   function renderMovement(movement) {
@@ -476,7 +472,7 @@
     return `<span class="movement-badge movement-flat">= estável</span>`;
   }
 
-  function renderRankingEvolution(participant, currentRank, chartId) {
+  function renderRankingEvolution(participant, chartId) {
     const series = rankingEvolution(participant.id);
     if (series.length < 2) {
       return `
@@ -495,7 +491,7 @@
       <div id="${chartId}" class="ranking-evolution">
         <div class="ranking-evolution-heading">
           <span>Evolução no ranking por dia</span>
-          <strong>Atual: ${ordinal(currentRank)}</strong>
+          <strong>Atual: ${ordinal(current.rank)}</strong>
         </div>
         ${renderRankingChart(series, chartId)}
         <div class="ranking-chart-legend" aria-label="Resumo da evolução">
@@ -519,9 +515,10 @@
   }
 
   function completedDates() {
+    const cutoffDate = dailySnapshotCutoffDate();
     return [...new Set(
       data.matches
-        .filter((match) => matchResult(match.id) && match.date)
+        .filter((match) => matchResult(match.id) && match.date && match.date <= cutoffDate)
         .map((match) => match.date),
     )].sort();
   }
@@ -790,6 +787,29 @@
     }).formatToParts(new Date());
     const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
     return new Date(Number(values.year), Number(values.month) - 1, Number(values.day));
+  }
+
+  function dailySnapshotCutoffDate(now = new Date()) {
+    const parts = new Intl.DateTimeFormat("en-CA", {
+      timeZone: DISPLAY_TIME_ZONE,
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      hourCycle: "h23",
+    }).formatToParts(now);
+    const values = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+    const localDate = new Date(Number(values.year), Number(values.month) - 1, Number(values.day));
+    const daysBack = Number(values.hour) >= 3 ? 1 : 2;
+    localDate.setDate(localDate.getDate() - daysBack);
+    return dateKey(localDate);
+  }
+
+  function dateKey(date) {
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
   }
 
   function normalizeText(value) {
