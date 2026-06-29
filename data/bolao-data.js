@@ -1,6 +1,6 @@
 window.BOLAO_DATA = {
-  "generatedAt": "2026-06-09T19:17:58.962660+00:00",
-  "sourceFolder": "/Users/ehazevedo/Downloads/Bolao Copa do Mundo Fifa 2026.pdf",
+  "generatedAt": "2026-06-29T19:54:26.027060+00:00",
+  "sourceFolder": "/Users/tvs/Downloads/Bolao Copa do Mundo Fifa 2026 _16avos.pdf",
   "rules": {
     "simpleResultPoints": 2,
     "exactScoreBonus": 3,
@@ -587,6 +587,134 @@ window.BOLAO_DATA = {
       "date": "2026-06-27",
       "team1": "Croácia",
       "team2": "Gana"
+    },
+    {
+      "id": 73,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-06-28",
+      "team1": "África do Sul",
+      "team2": "Canadá"
+    },
+    {
+      "id": 74,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-06-29",
+      "team1": "Brasil",
+      "team2": "Japão"
+    },
+    {
+      "id": 75,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-06-29",
+      "team1": "Alemanha",
+      "team2": "Paraguai"
+    },
+    {
+      "id": 76,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-06-29",
+      "team1": "Holanda",
+      "team2": "Marrocos"
+    },
+    {
+      "id": 77,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-06-30",
+      "team1": "Costa do Marfim",
+      "team2": "Noruega"
+    },
+    {
+      "id": 78,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-06-30",
+      "team1": "França",
+      "team2": "Suécia"
+    },
+    {
+      "id": 79,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-06-30",
+      "team1": "México",
+      "team2": "Equador"
+    },
+    {
+      "id": 80,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-07-01",
+      "team1": "Inglaterra",
+      "team2": "Congo"
+    },
+    {
+      "id": 81,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-07-01",
+      "team1": "Bélgica",
+      "team2": "Senegal"
+    },
+    {
+      "id": 82,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-07-01",
+      "team1": "Estados Unidos",
+      "team2": "Bósnia"
+    },
+    {
+      "id": 83,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-07-02",
+      "team1": "Espanha",
+      "team2": "Austria"
+    },
+    {
+      "id": 84,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-07-02",
+      "team1": "Portugal",
+      "team2": "Croacia"
+    },
+    {
+      "id": 85,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-07-03",
+      "team1": "Suíça",
+      "team2": "Argélia"
+    },
+    {
+      "id": 86,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-07-03",
+      "team1": "Austrália",
+      "team2": "Egito"
+    },
+    {
+      "id": 87,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-07-03",
+      "team1": "Argentina",
+      "team2": "Cabo Verde"
+    },
+    {
+      "id": 88,
+      "phase": "Rodada de 32",
+      "group": "Playoffs",
+      "date": "2026-07-03",
+      "team1": "Colombia",
+      "team2": "Gana"
     }
   ],
   "participants": [
@@ -952,6 +1080,86 @@ window.BOLAO_DATA = {
         },
         {
           "matchId": 72,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 73,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 2
+        },
+        {
+          "matchId": 75,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 76,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 78,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 79,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 84,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 85,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 86,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 87,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 88,
           "g1": 2,
           "g2": 1
         }
@@ -1321,6 +1529,86 @@ window.BOLAO_DATA = {
           "matchId": 72,
           "g1": 2,
           "g2": 1
+        },
+        {
+          "matchId": 73,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 75,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 76,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 78,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 79,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 84,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 85,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 86,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 87,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 88,
+          "g1": 2,
+          "g2": 0
         }
       ]
     },
@@ -1688,6 +1976,86 @@ window.BOLAO_DATA = {
           "matchId": 72,
           "g1": 2,
           "g2": 0
+        },
+        {
+          "matchId": 73,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 75,
+          "g1": 5,
+          "g2": 1
+        },
+        {
+          "matchId": 76,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 78,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 79,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 2,
+          "g2": 2
+        },
+        {
+          "matchId": 83,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 84,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 85,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 86,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 87,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 88,
+          "g1": 1,
+          "g2": 1
         }
       ]
     },
@@ -2055,6 +2423,86 @@ window.BOLAO_DATA = {
           "matchId": 72,
           "g1": 2,
           "g2": 1
+        },
+        {
+          "matchId": 73,
+          "g1": 0,
+          "g2": 3
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 75,
+          "g1": 5,
+          "g2": 1
+        },
+        {
+          "matchId": 76,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 3
+        },
+        {
+          "matchId": 78,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 79,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 4,
+          "g2": 1
+        },
+        {
+          "matchId": 84,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 85,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 86,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 87,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 88,
+          "g1": 2,
+          "g2": 0
         }
       ]
     },
@@ -2421,6 +2869,86 @@ window.BOLAO_DATA = {
         {
           "matchId": 72,
           "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 73,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 75,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 76,
+          "g1": 1,
+          "g2": 3
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 78,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 79,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 80,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 84,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 85,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 86,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 87,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 88,
+          "g1": 1,
           "g2": 0
         }
       ]
@@ -2789,6 +3317,86 @@ window.BOLAO_DATA = {
           "matchId": 72,
           "g1": 3,
           "g2": 1
+        },
+        {
+          "matchId": 73,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 75,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 76,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 78,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 79,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 84,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 85,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 86,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 87,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 88,
+          "g1": 2,
+          "g2": 1
         }
       ]
     },
@@ -3154,6 +3762,86 @@ window.BOLAO_DATA = {
         },
         {
           "matchId": 72,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 73,
+          "g1": 1,
+          "g2": 3
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 75,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 76,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 3
+        },
+        {
+          "matchId": 78,
+          "g1": 4,
+          "g2": 0
+        },
+        {
+          "matchId": 79,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 80,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 81,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 84,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 85,
+          "g1": 4,
+          "g2": 1
+        },
+        {
+          "matchId": 86,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 87,
+          "g1": 5,
+          "g2": 0
+        },
+        {
+          "matchId": 88,
           "g1": 2,
           "g2": 1
         }
@@ -3523,6 +4211,86 @@ window.BOLAO_DATA = {
           "matchId": 72,
           "g1": 2,
           "g2": 1
+        },
+        {
+          "matchId": 73,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 75,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 76,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 78,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 79,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 80,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 82,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 84,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 85,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 86,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 87,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 88,
+          "g1": 2,
+          "g2": 1
         }
       ]
     },
@@ -3889,6 +4657,86 @@ window.BOLAO_DATA = {
         {
           "matchId": 72,
           "g1": 2,
+          "g2": 2
+        },
+        {
+          "matchId": 73,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 74,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 75,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 76,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 78,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 79,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 84,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 85,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 86,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 87,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 88,
+          "g1": 1,
           "g2": 2
         }
       ]
@@ -4257,6 +5105,86 @@ window.BOLAO_DATA = {
           "matchId": 72,
           "g1": 1,
           "g2": 2
+        },
+        {
+          "matchId": 73,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 75,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 76,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 78,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 79,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 0,
+          "g2": 0
+        },
+        {
+          "matchId": 82,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 84,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 85,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 86,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 87,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 88,
+          "g1": 1,
+          "g2": 1
         }
       ]
     },
@@ -4623,6 +5551,86 @@ window.BOLAO_DATA = {
         {
           "matchId": 72,
           "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 73,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 75,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 76,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 78,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 79,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 84,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 85,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 86,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 87,
+          "g1": 4,
+          "g2": 0
+        },
+        {
+          "matchId": 88,
+          "g1": 3,
           "g2": 1
         }
       ]
@@ -4991,6 +5999,86 @@ window.BOLAO_DATA = {
           "matchId": 72,
           "g1": 3,
           "g2": 1
+        },
+        {
+          "matchId": 73,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 74,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 75,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 76,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 78,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 79,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 80,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 81,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 82,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 83,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 84,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 85,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 86,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 87,
+          "g1": 3,
+          "g2": 2
+        },
+        {
+          "matchId": 88,
+          "g1": 2,
+          "g2": 1
         }
       ]
     },
@@ -5358,6 +6446,86 @@ window.BOLAO_DATA = {
           "matchId": 72,
           "g1": 1,
           "g2": 0
+        },
+        {
+          "matchId": 73,
+          "g1": 0,
+          "g2": 2
+        },
+        {
+          "matchId": 74,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 75,
+          "g1": 4,
+          "g2": 2
+        },
+        {
+          "matchId": 76,
+          "g1": 0,
+          "g2": 2
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 78,
+          "g1": 4,
+          "g2": 0
+        },
+        {
+          "matchId": 79,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 81,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 84,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 85,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 86,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 87,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 88,
+          "g1": 3,
+          "g2": 1
         }
       ]
     },
@@ -5723,6 +6891,86 @@ window.BOLAO_DATA = {
         },
         {
           "matchId": 72,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 73,
+          "g1": 0,
+          "g2": 2
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 75,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 76,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 78,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 79,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 84,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 85,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 86,
+          "g1": 0,
+          "g2": 0
+        },
+        {
+          "matchId": 87,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 88,
           "g1": 1,
           "g2": 0
         }
@@ -6092,6 +7340,86 @@ window.BOLAO_DATA = {
           "matchId": 72,
           "g1": 3,
           "g2": 1
+        },
+        {
+          "matchId": 73,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 2
+        },
+        {
+          "matchId": 75,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 76,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 78,
+          "g1": 4,
+          "g2": 1
+        },
+        {
+          "matchId": 79,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 81,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 83,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 84,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 85,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 86,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 87,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 88,
+          "g1": 3,
+          "g2": 1
         }
       ]
     },
@@ -6457,6 +7785,86 @@ window.BOLAO_DATA = {
         },
         {
           "matchId": 72,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 73,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 74,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 75,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 76,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 78,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 79,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 83,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 84,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 85,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 86,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 87,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 88,
           "g1": 2,
           "g2": 1
         }
@@ -6826,6 +8234,86 @@ window.BOLAO_DATA = {
           "matchId": 72,
           "g1": 1,
           "g2": 2
+        },
+        {
+          "matchId": 73,
+          "g1": 0,
+          "g2": 2
+        },
+        {
+          "matchId": 74,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 75,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 76,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 78,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 79,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 82,
+          "g1": 4,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 84,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 85,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 86,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 87,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 88,
+          "g1": 3,
+          "g2": 1
         }
       ]
     },
@@ -7193,6 +8681,86 @@ window.BOLAO_DATA = {
           "matchId": 72,
           "g1": 2,
           "g2": 0
+        },
+        {
+          "matchId": 73,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 75,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 76,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 78,
+          "g1": 4,
+          "g2": 1
+        },
+        {
+          "matchId": 79,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 80,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 84,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 85,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 86,
+          "g1": 0,
+          "g2": 2
+        },
+        {
+          "matchId": 87,
+          "g1": 0,
+          "g2": 0
+        },
+        {
+          "matchId": 88,
+          "g1": 1,
+          "g2": 1
         }
       ]
     },
@@ -7558,6 +9126,86 @@ window.BOLAO_DATA = {
         },
         {
           "matchId": 72,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 73,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 75,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 76,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 78,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 79,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 80,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 83,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 84,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 85,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 86,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 87,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 88,
           "g1": 2,
           "g2": 1
         }
@@ -7927,6 +9575,86 @@ window.BOLAO_DATA = {
           "matchId": 72,
           "g1": 2,
           "g2": 0
+        },
+        {
+          "matchId": 73,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 74,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 75,
+          "g1": 2,
+          "g2": 2
+        },
+        {
+          "matchId": 76,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 77,
+          "g1": 2,
+          "g2": 3
+        },
+        {
+          "matchId": 78,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 79,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 4,
+          "g2": 0
+        },
+        {
+          "matchId": 81,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 82,
+          "g1": 4,
+          "g2": 1
+        },
+        {
+          "matchId": 83,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 84,
+          "g1": 2,
+          "g2": 2
+        },
+        {
+          "matchId": 85,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 86,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 87,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 88,
+          "g1": 2,
+          "g2": 0
         }
       ]
     },
@@ -8294,6 +10022,86 @@ window.BOLAO_DATA = {
           "matchId": 72,
           "g1": 2,
           "g2": 1
+        },
+        {
+          "matchId": 73,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 74,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 75,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 76,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 78,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 79,
+          "g1": 1,
+          "g2": 1
+        },
+        {
+          "matchId": 80,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 81,
+          "g1": 2,
+          "g2": 2
+        },
+        {
+          "matchId": 82,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 83,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 84,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 85,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 86,
+          "g1": 1,
+          "g2": 0
+        },
+        {
+          "matchId": 87,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 88,
+          "g1": 2,
+          "g2": 0
         }
       ]
     },
@@ -8661,6 +10469,86 @@ window.BOLAO_DATA = {
           "matchId": 72,
           "g1": 1,
           "g2": 2
+        },
+        {
+          "matchId": 73,
+          "g1": 0,
+          "g2": 2
+        },
+        {
+          "matchId": 74,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 75,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 76,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 77,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 78,
+          "g1": 3,
+          "g2": 0
+        },
+        {
+          "matchId": 79,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 80,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 81,
+          "g1": 0,
+          "g2": 1
+        },
+        {
+          "matchId": 82,
+          "g1": 3,
+          "g2": 1
+        },
+        {
+          "matchId": 83,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 84,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 85,
+          "g1": 2,
+          "g2": 1
+        },
+        {
+          "matchId": 86,
+          "g1": 1,
+          "g2": 2
+        },
+        {
+          "matchId": 87,
+          "g1": 2,
+          "g2": 0
+        },
+        {
+          "matchId": 88,
+          "g1": 2,
+          "g2": 1
         }
       ]
     }

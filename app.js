@@ -7,18 +7,19 @@
   const isAdmin = isLocalHost;
   let results = { ...publishedResults };
   let sheetLoadedAt = null;
-  const matchFilters = { search: "", group: "" };
-  const leaderboardFilters = { type: "all" };
+  const matchFilters = { search: "", group: "", phase: "" };
+  const leaderboardFilters = { stage: "all" };
   let expandedParticipantId = "";
 
   const tabs = document.querySelectorAll(".tab");
   const views = document.querySelectorAll(".view");
   const lastUpdated = document.querySelector("#lastUpdated");
   const leaderboardList = document.querySelector("#leaderboard");
-  const leaderboardFilterButtons = document.querySelectorAll("[data-leaderboard-filter]");
+  const leaderboardStageButtons = document.querySelectorAll("[data-leaderboard-stage]");
   const matchBetsBoard = document.querySelector("#matchBetsBoard");
   const matchSearch = document.querySelector("#matchSearch");
   const matchGroupFilter = document.querySelector("#matchGroupFilter");
+  const matchPhaseFilter = document.querySelector("#matchPhaseFilter");
   const clearMatchFilters = document.querySelector("#clearMatchFilters");
   const participantSelect = document.querySelector("#participantSelect");
   const participantBetsBody = document.querySelector("#participantBets tbody");
@@ -51,15 +52,16 @@
     await refreshBetsFromFolder();
   });
 
-  leaderboardFilterButtons.forEach((button) => {
+  leaderboardStageButtons.forEach((button) => {
     button.setAttribute("aria-pressed", String(button.classList.contains("active")));
     button.addEventListener("click", () => {
-      leaderboardFilters.type = button.dataset.leaderboardFilter || "all";
-      leaderboardFilterButtons.forEach((item) => {
+      leaderboardFilters.stage = button.dataset.leaderboardStage || "all";
+      leaderboardStageButtons.forEach((item) => {
         const isActive = item === button;
         item.classList.toggle("active", isActive);
         item.setAttribute("aria-pressed", String(isActive));
       });
+      expandedParticipantId = "";
       renderLeaderboard();
     });
   });
@@ -81,11 +83,17 @@
     matchFilters.group = matchGroupFilter.value;
     renderMatchBetsBoard();
   });
+  matchPhaseFilter?.addEventListener("change", () => {
+    matchFilters.phase = matchPhaseFilter.value;
+    renderMatchBetsBoard();
+  });
   clearMatchFilters?.addEventListener("click", () => {
     matchFilters.search = "";
     matchFilters.group = "";
+    matchFilters.phase = "";
     if (matchSearch) matchSearch.value = "";
     if (matchGroupFilter) matchGroupFilter.value = "";
+    if (matchPhaseFilter) matchPhaseFilter.value = "";
     renderMatchBetsBoard();
   });
 
@@ -113,6 +121,7 @@
     renderPrizes();
     renderLeaderboard();
     renderMatchGroupFilter();
+    renderMatchPhaseFilter();
     renderMatchBetsBoard();
     renderParticipantSelect();
     renderParticipantBets();
@@ -306,6 +315,70 @@
     };
   }
 
+  function matchStageKey(match) {
+    const phase = normalizeText(match.phase || "");
+    if (phase.includes("fase de grupos") || phase.includes("grupo")) return "Fase de Grupos";
+    if (phase.includes("rodada de 32") || phase.includes("16 avos") || phase.includes("round of 32")) return "Rodada de 32";
+    if (
+      phase.includes("oitavas")
+      || phase.includes("round of 16")
+      || phase.includes("quartas")
+      || phase.includes("quarter")
+      || phase.includes("semifinal")
+      || phase.includes("semi")
+      || phase.includes("final")
+      || phase.includes("3 lugar")
+      || phase.includes("terceiro")
+    ) {
+      return "Oitavas à Final";
+    }
+
+    const matchId = Number(match.id);
+    if (matchId >= 73 && matchId <= 88) return "Rodada de 32";
+    if (matchId >= 89 && matchId <= 104) return "Oitavas à Final";
+    return "Fase de Grupos";
+  }
+
+  function stageWeights() {
+    return {
+      "Fase de Grupos": 35,
+      "Rodada de 32": 25,
+      "Oitavas à Final": 40,
+      ...(data.rules.stageWeights || {}),
+    };
+  }
+
+  function stageMaxPoints(stage) {
+    const maxPerMatch = data.rules.maxPerMatch || 5;
+    const matches = data.matches.filter((match) => matchStageKey(match) === stage);
+    return matches.length * maxPerMatch;
+  }
+
+  function weightedPoints(phaseTotals, matchPredicate = () => true) {
+    return stageBreakdown(phaseTotals, matchPredicate).reduce((sum, stage) => sum + stage.weighted, 0);
+  }
+
+  function stageBreakdown(phaseTotals, matchPredicate = () => true) {
+    const weights = stageWeights();
+    return Object.entries(weights)
+      .sort(([stageA], [stageB]) => stageOrder(stageA) - stageOrder(stageB))
+      .map(([stage, weight]) => {
+        const factor = stageWeightFactor(weight);
+        const points = phaseTotals[stage] || 0;
+        const weighted = points * factor;
+        return { stage, weight, factor, max: stageMaxPoints(stage), points, weighted };
+      });
+  }
+
+  function stageWeightFactor(weight) {
+    const value = Number(weight || 0);
+    return value > 1 ? value / 100 : value;
+  }
+
+  function formatWeightedPoints(value) {
+    return value.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
   function participantStats(participant, matchPredicate = () => true) {
     const byMatch = new Map(participant.bets.map((bet) => [bet.matchId, bet]));
     const completed = data.matches.filter((match) => matchResult(match.id) && matchPredicate(match));
@@ -322,17 +395,14 @@
       exact += score.exact ? 1 : 0;
       simple += score.simple && !score.exact ? 1 : 0;
       scoredMatches += score.points > 0 ? 1 : 0;
-      phaseTotals[match.phase] = (phaseTotals[match.phase] || 0) + score.points;
+      const stage = matchStageKey(match);
+      phaseTotals[stage] = (phaseTotals[stage] || 0) + score.points;
     });
 
-    const weighted = Object.entries(phaseTotals).reduce((sum, [phase, phasePoints]) => {
-      const phaseMatches = data.matches.filter((match) => match.phase === phase).length;
-      const max = phaseMatches * (data.rules.maxPerMatch || 5);
-      const weight = (data.rules.stageWeights || {})[phase] || 0;
-      return sum + (max ? (phasePoints / max) * weight : 0);
-    }, 0);
+    const stages = stageBreakdown(phaseTotals, matchPredicate);
+    const weighted = stages.reduce((sum, stage) => sum + stage.weighted, 0);
 
-    return { points, weighted, exact, simple, scoredMatches };
+    return { points, weighted, exact, simple, scoredMatches, stages };
   }
 
   function leaderboardRows(matchPredicate = () => true) {
@@ -380,18 +450,13 @@
   }
 
   function renderLeaderboard() {
-    const movementByParticipant = dailyMovementByParticipant();
-    let rows = leaderboardRows().map((row) => ({
+    const matchPredicate = leaderboardMatchPredicate();
+    const movementByParticipant = dailyMovementByParticipant(matchPredicate);
+    let rows = leaderboardRows(matchPredicate).map((row) => ({
       ...row,
       movement: movementByParticipant.get(row.participant.id) || { change: 0, hasComparison: false },
     }));
 
-    if (leaderboardFilters.type === "top3") {
-      rows = rows.filter((row) => row.rank <= 3);
-    }
-    if (leaderboardFilters.type === "up") {
-      rows = rows.filter((row) => row.movement.change > 0);
-    }
     if (!rows.some((row) => row.participant.id === expandedParticipantId)) {
       expandedParticipantId = "";
     }
@@ -401,11 +466,16 @@
       return;
     }
 
-    leaderboardList.innerHTML = rows
+    leaderboardList.innerHTML = `
+      <div class="leaderboard-mode">
+        <span>${escapeHtml(leaderboardModeLabel())}</span>
+      </div>
+      ${rows
       .map((row) => {
         const topClass = row.rank <= 3 ? ` top-${row.rank}` : "";
         const isExpanded = row.participant.id === expandedParticipantId;
         const chartId = `ranking-evolution-${safeId(row.participant.id)}`;
+        const score = leaderboardDisplayScore(row.stats);
         return `
           <article class="leaderboard-card${topClass}${isExpanded ? " expanded" : ""}">
             <button class="leaderboard-card-button" type="button"
@@ -423,24 +493,89 @@
                 ${renderMovement(row.movement)}
               </span>
               <span class="leaderboard-points">
-                <strong>${row.stats.points}</strong>
-                <span>pts</span>
+                <strong>${score.value}</strong>
+                <span>${escapeHtml(score.label)}</span>
+                ${score.detail ? `<small>${escapeHtml(score.detail)}</small>` : ""}
               </span>
               <span class="leaderboard-expand-icon" aria-hidden="true">${isExpanded ? "▲" : "▼"}</span>
             </button>
-            ${isExpanded ? renderRankingEvolution(row.participant, chartId) : ""}
+            ${isExpanded ? renderLeaderboardDetails(row.participant, row.stats, chartId) : ""}
           </article>
         `;
       })
-      .join("");
+      .join("")}
+    `;
   }
 
-  function dailyMovementByParticipant() {
+  function renderLeaderboardDetails(participant, stats, chartId) {
+    if (leaderboardFilters.stage !== "all") {
+      return renderRankingEvolution(participant, chartId);
+    }
+    return `
+      <div class="leaderboard-details">
+        ${renderStageBreakdown(stats.stages)}
+        ${renderRankingEvolution(participant, chartId)}
+      </div>
+    `;
+  }
+
+  function leaderboardMatchPredicate() {
+    if (!leaderboardFilters.stage || leaderboardFilters.stage === "all") return () => true;
+    return (match) => matchStageKey(match) === leaderboardFilters.stage;
+  }
+
+  function leaderboardModeLabel() {
+    if (!leaderboardFilters.stage || leaderboardFilters.stage === "all") return "Pontuação geral ponderada";
+    return `Pontos brutos: ${stageLabel(leaderboardFilters.stage)}`;
+  }
+
+  function leaderboardDisplayScore(stats) {
+    if (!leaderboardFilters.stage || leaderboardFilters.stage === "all") {
+      return {
+        value: formatWeightedPoints(stats.weighted),
+        label: "pts ponderados",
+        detail: `${stats.points} pts brutos`,
+      };
+    }
+    return {
+      value: String(stats.points),
+      label: "pts brutos",
+      detail: "",
+    };
+  }
+
+  function renderStageBreakdown(stages = []) {
+    return `
+      <div class="stage-breakdown" aria-label="Pontuação por etapa">
+        ${stages.map((stage) => {
+          return `
+            <div class="stage-score stage-score-${safeId(stage.stage)}">
+              <div class="stage-score-top">
+                <span>${escapeHtml(stageLabel(stage.stage))}</span>
+                <strong>${formatWeightedPoints(stage.weighted)}</strong>
+              </div>
+              <small>${stage.points} pts brutos x ${stage.factor.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</small>
+            </div>
+          `;
+        }).join("")}
+      </div>
+    `;
+  }
+
+  function stageLabel(stage) {
+    return {
+      "Fase de Grupos": "Grupos",
+      "Rodada de 32": "16 avos",
+      "Oitavas à Final": "Oitavas-Final",
+    }[stage] || stage;
+  }
+
+  function dailyMovementByParticipant(matchPredicate = () => true) {
     const latestDate = latestDailyCompletedMatchDate();
     if (!latestDate) return new Map();
 
-    const currentRows = leaderboardRows((match) => (match.date || "") <= latestDate);
-    const previousRows = leaderboardRows((match) => (match.date || "") < latestDate);
+    const currentRows = leaderboardRows((match) => matchPredicate(match) && (match.date || "") <= latestDate);
+    const previousRows = leaderboardRows((match) => matchPredicate(match) && (match.date || "") < latestDate);
     if (!previousRows.some((row) => row.stats.points > 0)) {
       return new Map(currentRows.map((row) => [row.participant.id, { change: 0, hasComparison: false }]));
     }
@@ -589,8 +724,35 @@
       return;
     }
 
-    const categories = categorizeMatches(filteredMatches());
-    matchBetsBoard.innerHTML = categories
+    const matches = filteredMatches();
+    const playoffMatches = matches.filter(isPlayoffMatch);
+    const otherMatches = matches.filter((match) => !isPlayoffMatch(match));
+
+    matchBetsBoard.innerHTML = `
+      <section class="match-bets-feature">
+        <div class="match-bets-section-heading">
+          <div>
+            <h3>Jogos dos playoffs</h3>
+            <p>Rodada de 32 em diante, com palpites e pontuação por jogo.</p>
+          </div>
+          <span>${playoffMatches.length}</span>
+        </div>
+        ${renderMatchCategoryColumns(categorizeMatches(playoffMatches))}
+      </section>
+      <details class="other-matches-panel">
+        <summary>
+          <span>Demais jogos</span>
+          <strong>${otherMatches.length}</strong>
+        </summary>
+        ${renderMatchCategoryColumns(categorizeMatches(otherMatches))}
+      </details>
+    `;
+  }
+
+  function renderMatchCategoryColumns(categories) {
+    return `
+      <div class="match-bets-board-grid">
+        ${categories
       .map((category) => `
         <section class="match-bets-column">
           <div class="match-bets-column-heading">
@@ -606,7 +768,9 @@
           </div>
         </section>
       `)
-      .join("");
+      .join("")}
+      </div>
+    `;
   }
 
   function renderMatchGroupFilter() {
@@ -625,17 +789,46 @@
     }
   }
 
+  function renderMatchPhaseFilter() {
+    if (!matchPhaseFilter) return;
+    const selected = matchPhaseFilter.value || matchFilters.phase;
+    const phases = [...new Set(data.matches.map((match) => matchStageKey(match)).filter(Boolean))]
+      .sort((a, b) => stageOrder(a) - stageOrder(b) || a.localeCompare(b, "pt-BR"));
+    matchPhaseFilter.innerHTML = [
+      `<option value="">Todas as fases</option>`,
+      ...phases.map((phase) => `<option value="${escapeHtml(phase)}">${escapeHtml(phase)}</option>`),
+    ].join("");
+    if (phases.includes(selected)) {
+      matchPhaseFilter.value = selected;
+      matchFilters.phase = selected;
+    }
+  }
+
   function filteredMatches() {
     const search = normalizeText(matchFilters.search);
     return data.matches.filter((match) => {
       const matchesGroup = !matchFilters.group || match.group === matchFilters.group;
       if (!matchesGroup) return false;
+      const matchesPhase = !matchFilters.phase || matchStageKey(match) === matchFilters.phase;
+      if (!matchesPhase) return false;
       if (!search) return true;
       const haystack = normalizeText(
-        `#${match.id} ${match.group || ""} ${formatDate(match.date)} ${match.team1} ${match.team2}`,
+        `#${match.id} ${match.group || ""} ${matchStageKey(match)} ${formatDate(match.date)} ${match.team1} ${match.team2}`,
       );
       return haystack.includes(search);
     });
+  }
+
+  function isPlayoffMatch(match) {
+    return matchStageKey(match) !== "Fase de Grupos";
+  }
+
+  function stageOrder(stage) {
+    return {
+      "Fase de Grupos": 1,
+      "Rodada de 32": 2,
+      "Oitavas à Final": 3,
+    }[stage] || 99;
   }
 
   function categorizeMatches(matches = data.matches) {
@@ -686,7 +879,7 @@
     return `
       <details class="match-bets-card">
         <summary>
-          <span class="match-bets-meta">#${match.id} · Grupo ${escapeHtml(match.group || "-")} · ${escapeHtml(formatDate(match.date))}</span>
+          <span class="match-bets-meta">#${match.id} · ${escapeHtml(matchStageKey(match))} · ${escapeHtml(formatDate(match.date))}</span>
           <strong>${escapeHtml(match.team1)} x ${escapeHtml(match.team2)}</strong>
           <span class="match-bets-result">${escapeHtml(resultLabel)}</span>
         </summary>
@@ -733,7 +926,7 @@
         return `
           <tr>
             <td>${match.id}</td>
-            <td>${escapeHtml(match.group || "-")}</td>
+            <td>${escapeHtml(matchStageKey(match))}</td>
             <td>${escapeHtml(match.team1)} x ${escapeHtml(match.team2)}</td>
             <td>${formatScore(bet)}</td>
             <td>${actual ? `${actual.g1} x ${actual.g2}` : "-"}</td>

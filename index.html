@@ -54,10 +54,11 @@
             </div>
           </div>
           <div class="leaderboard-controls" aria-label="Filtros da classificação">
-            <div class="segmented-control" role="group" aria-label="Filtro de classificação">
-              <button class="segment active" type="button" data-leaderboard-filter="all">Todos</button>
-              <button class="segment" type="button" data-leaderboard-filter="top3">Top 3</button>
-              <button class="segment" type="button" data-leaderboard-filter="up">Subiram hoje</button>
+            <div class="segmented-control" role="group" aria-label="Filtro de pontuação por fase">
+              <button class="segment active" type="button" data-leaderboard-stage="all">Geral</button>
+              <button class="segment" type="button" data-leaderboard-stage="Fase de Grupos">1ª fase</button>
+              <button class="segment" type="button" data-leaderboard-stage="Rodada de 32">16 avos</button>
+              <button class="segment" type="button" data-leaderboard-stage="Oitavas à Final">Oitavas-Final</button>
             </div>
           </div>
           <div id="leaderboard" class="leaderboard-list" aria-live="polite"></div>
@@ -103,7 +104,9 @@
             <span>Resultado simples: 2 pontos</span>
             <span>Placar exato: +3 pontos</span>
             <span>Máximo por jogo: 5 pontos</span>
-            <span>Fase de grupos: 35% do total</span>
+            <span>Fase de grupos: pontos x 0,35</span>
+            <span>16 avos: pontos x 0,25</span>
+            <span>Oitavas à final: pontos x 0,40</span>
           </div>
         </section>
 
@@ -124,6 +127,10 @@
             <label class="select-label">
               Buscar jogo
               <input id="matchSearch" class="text-input" type="search" placeholder="Seleção, grupo ou número" autocomplete="off">
+            </label>
+            <label class="select-label">
+              Fase
+              <select id="matchPhaseFilter"></select>
             </label>
             <label class="select-label">
               Grupo
@@ -156,7 +163,7 @@
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Grupo</th>
+                  <th>Fase</th>
                   <th>Jogo</th>
                   <th>Palpite</th>
                   <th>Resultado</th>

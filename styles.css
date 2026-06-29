@@ -316,6 +316,15 @@ tbody tr:hover {
   gap: 10px;
 }
 
+.leaderboard-mode {
+  display: flex;
+  justify-content: flex-end;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
 .leaderboard-card {
   position: relative;
   border: 1px solid var(--line);
@@ -453,6 +462,12 @@ tbody tr:hover {
   text-transform: uppercase;
 }
 
+.leaderboard-points small {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
+}
+
 .leaderboard-expand-icon {
   display: inline-flex;
   align-items: center;
@@ -462,6 +477,78 @@ tbody tr:hover {
   color: var(--brand-2);
   font-size: 12px;
   font-weight: 900;
+}
+
+.leaderboard-details {
+  display: grid;
+  gap: 12px;
+  margin: 2px 4px 4px 62px;
+  border-top: 1px solid var(--line);
+  padding: 14px 12px 12px 0;
+}
+
+.leaderboard-details .ranking-evolution {
+  margin: 0;
+  border-top: 0;
+  padding: 0;
+}
+
+.stage-breakdown {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.stage-score {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.stage-score-fase-de-grupos {
+  border-color: rgba(0, 151, 57, 0.28);
+  background: #eef8ef;
+}
+
+.stage-score-rodada-de-32 {
+  border-color: rgba(16, 91, 145, 0.25);
+  background: #edf5fb;
+}
+
+.stage-score-oitavas-a-final {
+  border-color: rgba(199, 125, 50, 0.3);
+  background: #fff5e8;
+}
+
+.stage-score-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.stage-score-top span,
+.stage-score-top strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stage-score-top strong {
+  color: var(--brand-2);
+}
+
+.stage-score small {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 700;
 }
 
 .movement-legend {
@@ -741,6 +828,11 @@ select,
 
 .match-bets-board {
   display: grid;
+  gap: 16px;
+}
+
+.match-bets-board-grid {
+  display: grid;
   grid-template-columns: repeat(4, minmax(250px, 1fr));
   gap: 14px;
   align-items: start;
@@ -756,6 +848,69 @@ select,
 
 .match-bets-column {
   min-width: 0;
+}
+
+.match-bets-feature,
+.other-matches-panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  background: #fff;
+}
+
+.match-bets-feature {
+  border-left: 5px solid var(--brand-2);
+}
+
+.match-bets-section-heading,
+.other-matches-panel summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.match-bets-section-heading h3 {
+  margin: 0;
+  color: var(--brand-2);
+  font-size: 18px;
+}
+
+.match-bets-section-heading p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.match-bets-section-heading > span,
+.other-matches-panel summary strong {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+  border-radius: 999px;
+  background: var(--surface-soft);
+  color: var(--brand-2);
+  font-weight: 900;
+}
+
+.other-matches-panel summary {
+  margin-bottom: 0;
+  cursor: pointer;
+  list-style: none;
+  color: var(--brand-2);
+  font-weight: 900;
+}
+
+.other-matches-panel summary::-webkit-details-marker {
+  display: none;
+}
+
+.other-matches-panel[open] summary {
+  margin-bottom: 12px;
 }
 
 .match-bets-column-heading {
@@ -891,7 +1046,7 @@ select,
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .match-bets-board {
+  .match-bets-board-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -927,6 +1082,14 @@ select,
     margin-left: 52px;
   }
 
+  .leaderboard-details {
+    margin-left: 52px;
+  }
+
+  .stage-breakdown {
+    grid-template-columns: 1fr;
+  }
+
   select,
   .text-input {
     min-width: 0;
@@ -951,7 +1114,7 @@ select,
     grid-template-columns: 1fr;
   }
 
-  .match-bets-board {
+  .match-bets-board-grid {
     grid-template-columns: 1fr;
   }
 
@@ -986,9 +1149,9 @@ select,
   }
 
   .leaderboard-points {
-    display: flex;
-    align-items: baseline;
-    gap: 5px;
+    display: grid;
+    justify-items: start;
+    gap: 2px;
   }
 
   .leaderboard-points strong {
@@ -998,6 +1161,15 @@ select,
   .ranking-evolution {
     margin: 14px 0 2px;
     padding: 14px 10px 12px;
+  }
+
+  .leaderboard-details {
+    margin: 14px 0 2px;
+    padding: 12px 10px;
+  }
+
+  .stage-breakdown {
+    grid-template-columns: 1fr;
   }
 
   .ranking-chart {
