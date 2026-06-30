@@ -659,9 +659,9 @@
   }
 
   function renderRankingChart(series, chartId) {
-    const width = 720;
-    const height = 250;
-    const padding = { top: 26, right: 28, bottom: 42, left: 48 };
+    const width = 560;
+    const height = 360;
+    const padding = { top: 34, right: 24, bottom: 54, left: 44 };
     const innerWidth = width - padding.left - padding.right;
     const innerHeight = height - padding.top - padding.bottom;
     const maxRank = Math.max(data.participants.length, ...series.map((item) => item.rank), 1);
