@@ -495,10 +495,20 @@
   }
 
   function teamKey(team) {
-    const key = normalizeText(team);
+    const key = normalizeText(team)
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim()
+      .replace(/\s+/g, " ");
     return {
+      "coreia do sul": "coreia",
+      "costa do marfim": "costa do marfin",
+      "egiito": "egito",
+      "estados unidos": "eua",
+      "holanda": "paises baixos",
+      "paises baixos": "paises baixos",
+      "rep tcheca": "republica tcheca",
+      "rd congo": "congo",
       "usa": "eua",
-      "belgica": "belgica",
     }[key] || key;
   }
 
@@ -526,12 +536,23 @@
   }
 
   function renderMetrics() {
-    const completed = data.matches.filter((match) => resultForMatch(match)).length;
     const rows = leaderboardRows();
     document.getElementById("metricParticipants").textContent = data.participants.length;
-    document.getElementById("metricMatches").textContent = data.matches.length;
-    document.getElementById("metricCompleted").textContent = completed;
+    document.getElementById("metricMatches").textContent = officialRegisteredMatches().length;
+    document.getElementById("metricCompleted").textContent = officialCompletedMatches().length;
     document.getElementById("metricLeader").textContent = rows[0]?.participant.name || "-";
+  }
+
+  function officialRegisteredMatches() {
+    return [...data.matches, ...officialBracketSlots()];
+  }
+
+  function officialCompletedMatches() {
+    return officialRegisteredMatches().filter((match) => resultForMatch(match));
+  }
+
+  function officialBracketSlots() {
+    return (data.bracketSlots || []).filter((slot) => slot.phase === "Oitavas de Final" && hasOfficialSlotTeams(slot));
   }
 
   function renderPrizes() {
