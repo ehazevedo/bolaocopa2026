@@ -1,5 +1,5 @@
 window.BOLAO_DATA = {
-  "generatedAt": "2026-06-29T19:54:26.027060+00:00",
+  "generatedAt": "2026-07-05T21:04:17.881586+00:00",
   "sourceFolder": "/Users/tvs/Downloads/Bolao Copa do Mundo Fifa 2026 _16avos.pdf",
   "rules": {
     "simpleResultPoints": 2,
@@ -1163,6 +1163,184 @@ window.BOLAO_DATA = {
           "g1": 2,
           "g2": 1
         }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 1,
+          "g2": 3,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Mexico",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Portugal",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Portugal",
+          "team2": "Eua",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Mexico",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Portugal",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Portugal",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Colombia",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "França",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "Portugal",
+          "team2": "Brasil",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        }
       ]
     },
     {
@@ -1609,6 +1787,184 @@ window.BOLAO_DATA = {
           "matchId": 88,
           "g1": 2,
           "g2": 0
+        }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 0,
+          "g2": 3,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 3,
+          "winner": "Inglaterra",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 3,
+          "g2": 0,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Portugal",
+          "team2": "Eua",
+          "g1": 4,
+          "g2": 2,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Inglaterra",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Colombia",
+          "g1": 3,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Portugal",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Portugal",
+          "team2": "Argentina",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Brasil",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Brasil",
+          "winnerSource": "score"
         }
       ]
     },
@@ -2057,6 +2413,184 @@ window.BOLAO_DATA = {
           "g1": 1,
           "g2": 1
         }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 1,
+          "g2": 3,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Inglaterra",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 3,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Bélgica",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Espanha",
+          "team2": "Bélgica",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Bélgica",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Inglaterra",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Colombia",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Bélgica",
+          "team2": "Argentina",
+          "g1": 1,
+          "g2": 1,
+          "winner": null,
+          "winnerSource": ""
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Brasil",
+          "g1": 2,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        }
       ]
     },
     {
@@ -2503,6 +3037,184 @@ window.BOLAO_DATA = {
           "matchId": 88,
           "g1": 2,
           "g2": 0
+        }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 1,
+          "g2": 3,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Inglaterra",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Espanha",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Suiça",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Espanha",
+          "team2": "Eua",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Espanha",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Suiça",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Espanha",
+          "team2": "Brasil",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Argentina",
+          "g1": 3,
+          "g2": 3,
+          "winner": null,
+          "winnerSource": ""
         }
       ]
     },
@@ -2951,6 +3663,184 @@ window.BOLAO_DATA = {
           "g1": 1,
           "g2": 0
         }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 0,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Marrocos",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Mexico",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Bélgica",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Suiça",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Espanha",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Espanha",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Mexico",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Brasil",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Suiça",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Espanha",
+          "team2": "Argentina",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Brasil",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        }
       ]
     },
     {
@@ -3397,6 +4287,184 @@ window.BOLAO_DATA = {
           "matchId": 88,
           "g1": 2,
           "g2": 1
+        }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 0,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Inglaterra",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Espanha",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Eua",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Suiça",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Espanha",
+          "team2": "Eua",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Suiça",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Espanha",
+          "team2": "Argentina",
+          "g1": 0,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "Brasil",
+          "team2": "França",
+          "g1": 1,
+          "g2": 1,
+          "winner": null,
+          "winnerSource": ""
         }
       ]
     },
@@ -3845,6 +4913,184 @@ window.BOLAO_DATA = {
           "g1": 2,
           "g2": 1
         }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 0,
+          "g2": 3,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 3,
+          "g2": 2,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Inglaterra",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 3,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Portugal",
+          "team2": "Eua",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Portugal",
+          "g1": 3,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Portugal",
+          "team2": "Argentina",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Brasil",
+          "g1": 2,
+          "g2": 2,
+          "winner": null,
+          "winnerSource": ""
+        }
       ]
     },
     {
@@ -4291,6 +5537,184 @@ window.BOLAO_DATA = {
           "matchId": 88,
           "g1": 2,
           "g2": 1
+        }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 1,
+          "g2": 3,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 0,
+          "g2": 1,
+          "winner": "Inglaterra",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 0,
+          "g2": 1,
+          "winner": "Bélgica",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Espanha",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Colombia",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Espanha",
+          "team2": "Argentina",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Brasil",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
         }
       ]
     },
@@ -4739,6 +6163,184 @@ window.BOLAO_DATA = {
           "g1": 1,
           "g2": 2
         }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 0,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Inglaterra",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Bélgica",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Suiça",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Portugal",
+          "team2": "Bélgica",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Bélgica",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Suiça",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Bélgica",
+          "team2": "Argentina",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Brasil",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        }
       ]
     },
     {
@@ -5185,6 +6787,184 @@ window.BOLAO_DATA = {
           "matchId": 88,
           "g1": 1,
           "g2": 1
+        }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 0,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 0,
+          "g2": 1,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Inglaterra",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Espanha",
+          "team2": "Eua",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 0,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Espanha",
+          "team2": "Brasil",
+          "g1": 2,
+          "g2": 2,
+          "winner": null,
+          "winnerSource": ""
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Argentina",
+          "g1": 1,
+          "g2": 3,
+          "winner": "Argentina",
+          "winnerSource": "score"
         }
       ]
     },
@@ -5633,6 +7413,184 @@ window.BOLAO_DATA = {
           "g1": 3,
           "g2": 1
         }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 1,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Canadá",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Mexico",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Colombia",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Espanha",
+          "team2": "Eua",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Mexico",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Colombia",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Espanha",
+          "team2": "Argentina",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Brasil",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        }
       ]
     },
     {
@@ -6079,6 +8037,184 @@ window.BOLAO_DATA = {
           "matchId": 88,
           "g1": 2,
           "g2": 1
+        }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 1,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Canadá",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 3,
+          "winner": "Inglaterra",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 3,
+          "g2": 0,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Canadá",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Portugal",
+          "team2": "Eua",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Mexico",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Colombia",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Portugal",
+          "g1": 3,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 3,
+          "g2": 2,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Portugal",
+          "team2": "Argentina",
+          "g1": 2,
+          "g2": 3,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "Brasil",
+          "team2": "França",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
         }
       ]
     },
@@ -6527,6 +8663,184 @@ window.BOLAO_DATA = {
           "g1": 3,
           "g2": 1
         }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 1,
+          "g2": 3,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 3,
+          "g2": 0,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Mexico",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Portugal",
+          "team2": "Eua",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Eua",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Mexico",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Eua",
+          "g1": 2,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Colombia",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Eua",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Brasil",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        }
       ]
     },
     {
@@ -6973,6 +9287,184 @@ window.BOLAO_DATA = {
           "matchId": 88,
           "g1": 1,
           "g2": 0
+        }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 0,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 3,
+          "g2": 2,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Inglaterra",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 0,
+          "g2": 1,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Espanha",
+          "team2": "Eua",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Inglaterra",
+          "g1": 0,
+          "g2": 1,
+          "winner": "Inglaterra",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Colombia",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Inglaterra",
+          "team2": "Argentina",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Espanha",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Argentina",
+          "g1": 3,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
         }
       ]
     },
@@ -7421,6 +9913,184 @@ window.BOLAO_DATA = {
           "g1": 3,
           "g2": 1
         }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 1,
+          "g2": 3,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Noruega",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Mexico",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 3,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Egito",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 3,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 3,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Espanha",
+          "team2": "Eua",
+          "g1": 3,
+          "g2": 2,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Noruega",
+          "team2": "Mexico",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Mexico",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Egito",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 3,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Espanha",
+          "g1": 3,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Mexico",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Espanha",
+          "team2": "Mexico",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Mexico",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Colombia",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        }
       ]
     },
     {
@@ -7867,6 +10537,184 @@ window.BOLAO_DATA = {
           "matchId": 88,
           "g1": 2,
           "g2": 1
+        }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 1,
+          "g2": 3,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Inglaterra",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Eua",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 0,
+          "g2": 1,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Espanha",
+          "team2": "Eua",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Brasil",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Colombia",
+          "g1": 3,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Espanha",
+          "team2": "Brasil",
+          "g1": 1,
+          "g2": 1,
+          "winner": null,
+          "winnerSource": ""
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Argentina",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "score"
         }
       ]
     },
@@ -8315,6 +11163,184 @@ window.BOLAO_DATA = {
           "g1": 3,
           "g2": 1
         }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 0,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Mexico",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Portugal",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Suiça",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Portugal",
+          "team2": "Eua",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Mexico",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Suiça",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Portugal",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Portugal",
+          "team2": "Brasil",
+          "g1": 1,
+          "g2": 3,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Argentina",
+          "g1": 1,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        }
       ]
     },
     {
@@ -8761,6 +11787,184 @@ window.BOLAO_DATA = {
           "matchId": 88,
           "g1": 1,
           "g2": 1
+        }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 0,
+          "g2": 3,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Inglaterra",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 3,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Espanha",
+          "team2": "Eua",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Colombia",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Espanha",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Brasil",
+          "g1": 3,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
         }
       ]
     },
@@ -9209,6 +12413,184 @@ window.BOLAO_DATA = {
           "g1": 2,
           "g2": 1
         }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 0,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 0,
+          "g2": 1,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Mexico",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Suiça",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Espanha",
+          "team2": "Eua",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Mexico",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Suiça",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Espanha",
+          "team2": "Argentina",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Brasil",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        }
       ]
     },
     {
@@ -9655,6 +13037,184 @@ window.BOLAO_DATA = {
           "matchId": 88,
           "g1": 2,
           "g2": 0
+        }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 0,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 0,
+          "g2": 1,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Inglaterra",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 4,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 2,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Espanha",
+          "team2": "Eua",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Colombia",
+          "g1": 3,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Espanha",
+          "g1": 2,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 2,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Espanha",
+          "team2": "Brasil",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Argentina",
+          "g1": 3,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "score"
         }
       ]
     },
@@ -10103,6 +13663,184 @@ window.BOLAO_DATA = {
           "g1": 2,
           "g2": 0
         }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 1,
+          "g2": 2,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 1,
+          "g2": 0,
+          "winner": "Canadá",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Inglaterra",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Portugal",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 0,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Suiça",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Canadá",
+          "g1": 3,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Portugal",
+          "team2": "Eua",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "next-round"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Suiça",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Portugal",
+          "g1": 1,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Argentina",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "Portugal",
+          "team2": "Brasil",
+          "g1": 1,
+          "g2": 1,
+          "winner": null,
+          "winnerSource": ""
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "França",
+          "team2": "Argentina",
+          "g1": 2,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        }
       ]
     },
     {
@@ -10550,6 +14288,184 @@ window.BOLAO_DATA = {
           "g1": 2,
           "g2": 1
         }
+      ],
+      "bracketBets": [
+        {
+          "slot": "OIT-2",
+          "matchId": 90,
+          "phase": "Oitavas de Final",
+          "team1": "Paraguai",
+          "team2": "França",
+          "g1": 0,
+          "g2": 3,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-1",
+          "matchId": 89,
+          "phase": "Oitavas de Final",
+          "team1": "Canadá",
+          "team2": "Marrocos",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Marrocos",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-3",
+          "matchId": 91,
+          "phase": "Oitavas de Final",
+          "team1": "Brasil",
+          "team2": "Noruega",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-4",
+          "matchId": 92,
+          "phase": "Oitavas de Final",
+          "team1": "Mexico",
+          "team2": "Inglaterra",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Inglaterra",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-5",
+          "matchId": 93,
+          "phase": "Oitavas de Final",
+          "team1": "Portugal",
+          "team2": "Espanha",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Espanha",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-6",
+          "matchId": 94,
+          "phase": "Oitavas de Final",
+          "team1": "Eua",
+          "team2": "Bélgica",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Eua",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-7",
+          "matchId": 95,
+          "phase": "Oitavas de Final",
+          "team1": "Argentina",
+          "team2": "Egito",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Argentina",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "OIT-8",
+          "matchId": 96,
+          "phase": "Oitavas de Final",
+          "team1": "Suiça",
+          "team2": "Colombia",
+          "g1": 0,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-1",
+          "matchId": 97,
+          "phase": "Quartas de Final",
+          "team1": "França",
+          "team2": "Marrocos",
+          "g1": 3,
+          "g2": 1,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-2",
+          "matchId": 98,
+          "phase": "Quartas de Final",
+          "team1": "Portugal",
+          "team2": "Eua",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-3",
+          "matchId": 99,
+          "phase": "Quartas de Final",
+          "team1": "Brasil",
+          "team2": "Inglaterra",
+          "g1": 2,
+          "g2": 1,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "QF-4",
+          "matchId": 100,
+          "phase": "Quartas de Final",
+          "team1": "Argentina",
+          "team2": "Colombia",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Colombia",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-1",
+          "matchId": 101,
+          "phase": "Semifinal",
+          "team1": "França",
+          "team2": "Portugal",
+          "g1": 1,
+          "g2": 2,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "SF-2",
+          "matchId": 102,
+          "phase": "Semifinal",
+          "team1": "Brasil",
+          "team2": "Colombia",
+          "g1": 3,
+          "g2": 2,
+          "winner": "Brasil",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "TERCEIRO",
+          "matchId": 103,
+          "phase": "Terceiro Lugar",
+          "team1": "França",
+          "team2": "Colombia",
+          "g1": 2,
+          "g2": 0,
+          "winner": "França",
+          "winnerSource": "score"
+        },
+        {
+          "slot": "FINAL",
+          "matchId": 104,
+          "phase": "Final",
+          "team1": "Portugal",
+          "team2": "Brasil",
+          "g1": 3,
+          "g2": 1,
+          "winner": "Portugal",
+          "winnerSource": "score"
+        }
       ]
     }
   ],
@@ -10561,5 +14477,136 @@ window.BOLAO_DATA = {
     "first": 1980,
     "second": 990,
     "third": 330
-  }
+  },
+  "bracketSlots": [
+    {
+      "slot": "OIT-2",
+      "matchId": 90,
+      "phase": "Oitavas de Final",
+      "group": "Fase Final",
+      "team1": "Paraguai",
+      "team2": "França"
+    },
+    {
+      "slot": "OIT-1",
+      "matchId": 89,
+      "phase": "Oitavas de Final",
+      "group": "Fase Final",
+      "team1": "Canadá",
+      "team2": "Marrocos"
+    },
+    {
+      "slot": "OIT-3",
+      "matchId": 91,
+      "phase": "Oitavas de Final",
+      "group": "Fase Final",
+      "team1": "Brasil",
+      "team2": "Noruega"
+    },
+    {
+      "slot": "OIT-4",
+      "matchId": 92,
+      "phase": "Oitavas de Final",
+      "group": "Fase Final",
+      "team1": "México",
+      "team2": "Inglaterra"
+    },
+    {
+      "slot": "OIT-5",
+      "matchId": 93,
+      "phase": "Oitavas de Final",
+      "group": "Fase Final",
+      "team1": "Portugal",
+      "team2": "Espanha"
+    },
+    {
+      "slot": "OIT-6",
+      "matchId": 94,
+      "phase": "Oitavas de Final",
+      "group": "Fase Final",
+      "team1": "EUA",
+      "team2": "Bélgica"
+    },
+    {
+      "slot": "OIT-7",
+      "matchId": 95,
+      "phase": "Oitavas de Final",
+      "group": "Fase Final",
+      "team1": "Argentina",
+      "team2": "Egito"
+    },
+    {
+      "slot": "OIT-8",
+      "matchId": 96,
+      "phase": "Oitavas de Final",
+      "group": "Fase Final",
+      "team1": "Suíça",
+      "team2": "Colômbia"
+    },
+    {
+      "slot": "QF-1",
+      "matchId": 97,
+      "phase": "Quartas de Final",
+      "group": "Fase Final",
+      "team1": "Vencedor OIT-2",
+      "team2": "Vencedor OIT-1"
+    },
+    {
+      "slot": "QF-2",
+      "matchId": 98,
+      "phase": "Quartas de Final",
+      "group": "Fase Final",
+      "team1": "Vencedor OIT-5",
+      "team2": "Vencedor OIT-6"
+    },
+    {
+      "slot": "QF-3",
+      "matchId": 99,
+      "phase": "Quartas de Final",
+      "group": "Fase Final",
+      "team1": "Vencedor OIT-3",
+      "team2": "Vencedor OIT-4"
+    },
+    {
+      "slot": "QF-4",
+      "matchId": 100,
+      "phase": "Quartas de Final",
+      "group": "Fase Final",
+      "team1": "Vencedor OIT-7",
+      "team2": "Vencedor OIT-8"
+    },
+    {
+      "slot": "SF-1",
+      "matchId": 101,
+      "phase": "Semifinal",
+      "group": "Fase Final",
+      "team1": "Vencedor QF-1",
+      "team2": "Vencedor QF-2"
+    },
+    {
+      "slot": "SF-2",
+      "matchId": 102,
+      "phase": "Semifinal",
+      "group": "Fase Final",
+      "team1": "Vencedor QF-3",
+      "team2": "Vencedor QF-4"
+    },
+    {
+      "slot": "TERCEIRO",
+      "matchId": 103,
+      "phase": "Terceiro Lugar",
+      "group": "Fase Final",
+      "team1": "Perdedor SF-1",
+      "team2": "Perdedor SF-2"
+    },
+    {
+      "slot": "FINAL",
+      "matchId": 104,
+      "phase": "Final",
+      "group": "Fase Final",
+      "team1": "Vencedor SF-1",
+      "team2": "Vencedor SF-2"
+    }
+  ],
+  "finalPhaseSource": "/Users/tvs/Downloads/FASE FINAL_BOLAO Copa do Mundo Fifa 2026.xlsx.pdf"
 };

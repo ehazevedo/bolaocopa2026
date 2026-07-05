@@ -23,6 +23,7 @@
   const clearMatchFilters = document.querySelector("#clearMatchFilters");
   const participantSelect = document.querySelector("#participantSelect");
   const participantBetsBody = document.querySelector("#participantBets tbody");
+  const participantBracket = document.querySelector("#participantBracket");
   const statusMessage = document.querySelector("#statusMessage");
 
   document.body.classList.toggle("admin-mode", isAdmin);
@@ -213,11 +214,15 @@
     let matchIdIndex = findHeader(headers, ["matchid", "jogo", "match", "id"]);
     let g1Index = findHeader(headers, ["g1", "placar1", "gols1", "time1", "casa"]);
     let g2Index = findHeader(headers, ["g2", "placar2", "gols2", "time2", "fora"]);
+    let team1Index = findHeader(headers, ["selecao1", "team1", "equipe1"]);
+    let team2Index = findHeader(headers, ["selecao2", "team2", "equipe2"]);
 
     if (matchIdIndex < 0 || g1Index < 0 || g2Index < 0) {
       matchIdIndex = 0;
       g1Index = 1;
       g2Index = 2;
+      team1Index = 6;
+      team2Index = 10;
     }
 
     const nextResults = {};
@@ -228,7 +233,12 @@
       const g2 = numberFromCell(cells[g2Index]);
       if (!Number.isInteger(matchId)) return;
       if (!Number.isInteger(g1) || !Number.isInteger(g2)) return;
-      nextResults[String(matchId)] = { g1, g2 };
+      nextResults[String(matchId)] = {
+        g1,
+        g2,
+        team1: textFromCell(cells[team1Index]),
+        team2: textFromCell(cells[team2Index]),
+      };
     });
 
     return nextResults;
@@ -250,6 +260,10 @@
     if (!cell || cell.v === null || cell.v === undefined || cell.v === "") return null;
     const value = Number(cell.v);
     return Number.isFinite(value) ? value : null;
+  }
+
+  function textFromCell(cell) {
+    return String(cell?.v ?? cell?.f ?? "").trim();
   }
 
   function showStatus(target, message, kind) {
@@ -298,6 +312,36 @@
       return null;
     }
     return { g1: Number(value.g1), g2: Number(value.g2) };
+  }
+
+  function resultForMatch(match) {
+    const direct = results[String(match.id || match.matchId)];
+    if (hasCompleteScore(direct) && (!direct.team1 || !direct.team2 || !match.team1 || !match.team2 || teamsMatchSameOrder(direct, match))) {
+      return { g1: Number(direct.g1), g2: Number(direct.g2) };
+    }
+    if (hasCompleteScore(direct) && teamsMatchReverseOrder(direct, match)) {
+      return { g1: Number(direct.g2), g2: Number(direct.g1) };
+    }
+
+    const sameOrder = Object.values(results).find((candidate) => teamsMatchSameOrder(candidate, match));
+    if (hasCompleteScore(sameOrder)) {
+      return { g1: Number(sameOrder.g1), g2: Number(sameOrder.g2) };
+    }
+
+    const reverseOrder = Object.values(results).find((candidate) => teamsMatchReverseOrder(candidate, match));
+    if (hasCompleteScore(reverseOrder)) {
+      return { g1: Number(reverseOrder.g2), g2: Number(reverseOrder.g1) };
+    }
+
+    return null;
+  }
+
+  function teamsMatchSameOrder(result, match) {
+    return sameTeam(result?.team1, match?.team1) && sameTeam(result?.team2, match?.team2);
+  }
+
+  function teamsMatchReverseOrder(result, match) {
+    return sameTeam(result?.team1, match?.team2) && sameTeam(result?.team2, match?.team1);
   }
 
   function scoreBet(bet, actual) {
@@ -381,7 +425,8 @@
 
   function participantStats(participant, matchPredicate = () => true) {
     const byMatch = new Map(participant.bets.map((bet) => [bet.matchId, bet]));
-    const completed = data.matches.filter((match) => matchResult(match.id) && matchPredicate(match));
+    const completed = data.matches.filter((match) => resultForMatch(match) && matchPredicate(match));
+    const completedBracket = (data.bracketSlots || []).filter((slot) => resultForMatch(slot) && matchPredicate(slot));
     let points = 0;
     let exact = 0;
     let simple = 0;
@@ -390,7 +435,7 @@
 
     completed.forEach((match) => {
       const bet = byMatch.get(match.id) || null;
-      const score = scoreBet(bet, matchResult(match.id));
+      const score = scoreBet(bet, resultForMatch(match));
       points += score.points;
       exact += score.exact ? 1 : 0;
       simple += score.simple && !score.exact ? 1 : 0;
@@ -399,10 +444,62 @@
       phaseTotals[stage] = (phaseTotals[stage] || 0) + score.points;
     });
 
+    completedBracket.forEach((slot) => {
+      const bet = bracketBetForSlot(participant, slot.slot);
+      const score = scoreBracketBet(bet, slot, resultForMatch(slot));
+      points += score.points;
+      exact += score.exact ? 1 : 0;
+      simple += score.simple && !score.exact ? 1 : 0;
+      scoredMatches += score.points > 0 ? 1 : 0;
+      const stage = matchStageKey(slot);
+      phaseTotals[stage] = (phaseTotals[stage] || 0) + score.points;
+    });
+
     const stages = stageBreakdown(phaseTotals, matchPredicate);
     const weighted = stages.reduce((sum, stage) => sum + stage.weighted, 0);
 
     return { points, weighted, exact, simple, scoredMatches, stages };
+  }
+
+  function bracketBetForSlot(participant, slotId) {
+    return (participant.bracketBets || []).find((bet) => bet.slot === slotId) || null;
+  }
+
+  function scoreBracketBet(bet, slot, actual) {
+    if (!bet || !actual || !hasCompleteScore(actual) || !hasCompleteScore(bet) || !hasOfficialSlotTeams(slot)) {
+      return { points: 0, exact: false, simple: false, eligible: false };
+    }
+
+    const sameOrder = sameTeam(bet.team1, slot.team1) && sameTeam(bet.team2, slot.team2);
+    const reverseOrder = sameTeam(bet.team1, slot.team2) && sameTeam(bet.team2, slot.team1);
+    if (!sameOrder && !reverseOrder) {
+      return { points: 0, exact: false, simple: false, eligible: false };
+    }
+
+    const comparableBet = reverseOrder
+      ? { g1: bet.g2, g2: bet.g1 }
+      : { g1: bet.g1, g2: bet.g2 };
+    return { ...scoreBet(comparableBet, actual), eligible: true };
+  }
+
+  function hasOfficialSlotTeams(slot) {
+    return slot?.team1 && slot?.team2 && !isPlaceholderTeam(slot.team1) && !isPlaceholderTeam(slot.team2);
+  }
+
+  function isPlaceholderTeam(team) {
+    return /^(vencedor|perdedor)\s+/i.test(String(team || ""));
+  }
+
+  function sameTeam(teamA, teamB) {
+    return teamKey(teamA) === teamKey(teamB);
+  }
+
+  function teamKey(team) {
+    const key = normalizeText(team);
+    return {
+      "usa": "eua",
+      "belgica": "belgica",
+    }[key] || key;
   }
 
   function leaderboardRows(matchPredicate = () => true) {
@@ -429,7 +526,7 @@
   }
 
   function renderMetrics() {
-    const completed = data.matches.filter((match) => matchResult(match.id)).length;
+    const completed = data.matches.filter((match) => resultForMatch(match)).length;
     const rows = leaderboardRows();
     document.getElementById("metricParticipants").textContent = data.participants.length;
     document.getElementById("metricMatches").textContent = data.matches.length;
@@ -653,7 +750,7 @@
     const cutoffDate = dailySnapshotCutoffDate();
     return [...new Set(
       data.matches
-        .filter((match) => matchResult(match.id) && match.date && match.date <= cutoffDate)
+        .filter((match) => resultForMatch(match) && match.date && match.date <= cutoffDate)
         .map((match) => match.date),
     )].sort();
   }
@@ -725,10 +822,23 @@
     }
 
     const matches = filteredMatches();
+    const bracketSlots = filteredBracketSlots();
     const playoffMatches = matches.filter(isPlayoffMatch);
     const otherMatches = matches.filter((match) => !isPlayoffMatch(match));
 
     matchBetsBoard.innerHTML = `
+      ${data.bracketSlots?.length ? `
+        <section class="match-bets-feature final-slots-feature">
+          <div class="match-bets-section-heading">
+            <div>
+              <h3>Fase final projetada</h3>
+              <p>Slots das oitavas à final, comparando as chaves previstas por todos os participantes.</p>
+            </div>
+            <span>${bracketSlots.length}</span>
+          </div>
+          ${renderBracketSlotColumns(bracketSlots)}
+        </section>
+      ` : ""}
       <section class="match-bets-feature">
         <div class="match-bets-section-heading">
           <div>
@@ -745,6 +855,85 @@
           <strong>${otherMatches.length}</strong>
         </summary>
         ${renderMatchCategoryColumns(categorizeMatches(otherMatches))}
+      </details>
+    `;
+  }
+
+  function renderBracketSlotColumns(slots) {
+    const groups = bracketSlotGroups(slots);
+    return `
+      <div class="match-bets-board-grid bracket-slot-board">
+        ${groups.map((group) => `
+          <section class="match-bets-column">
+            <div class="match-bets-column-heading">
+              <h3>${escapeHtml(group.title)}</h3>
+              <span>${group.slots.length}</span>
+            </div>
+            <div class="match-bets-list">
+              ${
+                group.slots.length
+                  ? group.slots.map(renderBracketSlotCard).join("")
+                  : `<div class="empty compact">${escapeHtml(group.emptyText)}</div>`
+              }
+            </div>
+          </section>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  function bracketSlotGroups(slots) {
+    const phases = ["Oitavas de Final", "Quartas de Final", "Semifinal", "Terceiro Lugar", "Final"];
+    return phases.map((phase) => ({
+      title: phase,
+      emptyText: `Nenhum slot de ${phase.toLowerCase()} neste filtro.`,
+      slots: slots.filter((slot) => slot.phase === phase).sort((a, b) => a.matchId - b.matchId),
+    }));
+  }
+
+  function renderBracketSlotCard(slot) {
+    const actual = resultForMatch(slot);
+    const resultLabel = actual ? `${actual.g1} x ${actual.g2}` : "Sem resultado";
+    const teamsLabel = hasOfficialSlotTeams(slot)
+      ? `${slot.team1} x ${slot.team2}`
+      : `${slot.team1} x ${slot.team2}`;
+    const rows = data.participants.map((participant) => {
+      const bet = bracketBetForSlot(participant, slot.slot);
+      const score = scoreBracketBet(bet, slot, actual);
+      const status = bracketBetStatus(bet, slot, actual, score);
+      const pointClass = score.exact ? "points-exact" : score.points > 0 ? "points-good" : "";
+      return `
+        <tr>
+          <td>${escapeHtml(participant.name)}</td>
+          <td>${bet ? `${escapeHtml(bet.team1)} ${bet.g1} x ${bet.g2} ${escapeHtml(bet.team2)}` : "-"}</td>
+          <td>${bet?.winner ? escapeHtml(bet.winner) : "-"}</td>
+          <td class="${pointClass}">${actual ? score.points : "-"}</td>
+          <td><span class="slot-status ${status.className}">${escapeHtml(status.label)}</span></td>
+        </tr>
+      `;
+    }).join("");
+
+    return `
+      <details class="match-bets-card bracket-slot-card">
+        <summary>
+          <span class="match-bets-meta">#${slot.matchId} · ${escapeHtml(slot.slot)} · ${escapeHtml(slot.phase)}</span>
+          <strong>${escapeHtml(teamsLabel)}</strong>
+          <span class="match-bets-result">${escapeHtml(resultLabel)}</span>
+        </summary>
+        <div class="match-bets-details">
+          <table class="compact-table slot-table">
+            <thead>
+              <tr>
+                <th>Participante</th>
+                <th>Palpite</th>
+                <th>Avança</th>
+                <th>Pontos</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>
       </details>
     `;
   }
@@ -776,12 +965,15 @@
   function renderMatchGroupFilter() {
     if (!matchGroupFilter) return;
     const selected = matchGroupFilter.value || matchFilters.group;
-    const groups = [...new Set(data.matches.map((match) => match.group).filter(Boolean))].sort((a, b) =>
+    const groups = [...new Set([
+      ...data.matches.map((match) => match.group).filter(Boolean),
+      ...(data.bracketSlots || []).map((slot) => slot.group).filter(Boolean),
+    ])].sort((a, b) =>
       a.localeCompare(b, "pt-BR"),
     );
     matchGroupFilter.innerHTML = [
       `<option value="">Todos os grupos</option>`,
-      ...groups.map((group) => `<option value="${escapeHtml(group)}">Grupo ${escapeHtml(group)}</option>`),
+      ...groups.map((group) => `<option value="${escapeHtml(group)}">${escapeHtml(groupLabel(group))}</option>`),
     ].join("");
     if (groups.includes(selected)) {
       matchGroupFilter.value = selected;
@@ -789,10 +981,17 @@
     }
   }
 
+  function groupLabel(group) {
+    return group === "Fase Final" ? "Fase Final" : `Grupo ${group}`;
+  }
+
   function renderMatchPhaseFilter() {
     if (!matchPhaseFilter) return;
     const selected = matchPhaseFilter.value || matchFilters.phase;
-    const phases = [...new Set(data.matches.map((match) => matchStageKey(match)).filter(Boolean))]
+    const phases = [...new Set([
+      ...data.matches.map((match) => matchStageKey(match)).filter(Boolean),
+      ...(data.bracketSlots || []).map((slot) => matchStageKey(slot)).filter(Boolean),
+    ])]
       .sort((a, b) => stageOrder(a) - stageOrder(b) || a.localeCompare(b, "pt-BR"));
     matchPhaseFilter.innerHTML = [
       `<option value="">Todas as fases</option>`,
@@ -814,6 +1013,26 @@
       if (!search) return true;
       const haystack = normalizeText(
         `#${match.id} ${match.group || ""} ${matchStageKey(match)} ${formatDate(match.date)} ${match.team1} ${match.team2}`,
+      );
+      return haystack.includes(search);
+    });
+  }
+
+  function filteredBracketSlots() {
+    const search = normalizeText(matchFilters.search);
+    return (data.bracketSlots || []).filter((slot) => {
+      const matchesGroup = !matchFilters.group || slot.group === matchFilters.group;
+      if (!matchesGroup) return false;
+      const matchesPhase = !matchFilters.phase || matchStageKey(slot) === matchFilters.phase;
+      if (!matchesPhase) return false;
+      if (!search) return true;
+      const participantBets = data.participants
+        .map((participant) => bracketBetForSlot(participant, slot.slot))
+        .filter(Boolean)
+        .map((bet) => `${bet.team1} ${bet.team2} ${bet.winner || ""}`)
+        .join(" ");
+      const haystack = normalizeText(
+        `#${slot.matchId} ${slot.slot} ${slot.group || ""} ${matchStageKey(slot)} ${slot.phase} ${slot.team1} ${slot.team2} ${participantBets}`,
       );
       return haystack.includes(search);
     });
@@ -859,7 +1078,7 @@
   }
 
   function renderMatchBetsCard(match) {
-    const actual = matchResult(match.id);
+    const actual = resultForMatch(match);
     const resultLabel = actual ? `${actual.g1} x ${actual.g2}` : "Sem resultado";
     const betsByParticipant = data.participants
       .map((participant) => {
@@ -913,6 +1132,7 @@
     const participant = data.participants.find((item) => item.id === participantSelect.value) || data.participants[0];
     if (!participant) {
       participantBetsBody.innerHTML = `<tr><td colspan="6" class="empty">Nenhum participante importado ainda.</td></tr>`;
+      if (participantBracket) participantBracket.innerHTML = "";
       return;
     }
 
@@ -920,7 +1140,7 @@
     participantBetsBody.innerHTML = data.matches
       .map((match) => {
         const bet = bets.get(match.id) || null;
-        const actual = matchResult(match.id);
+        const actual = resultForMatch(match);
         const scored = scoreBet(bet, actual);
         const pointClass = scored.exact ? "points-exact" : scored.points > 0 ? "points-good" : "";
         return `
@@ -935,6 +1155,115 @@
         `;
       })
       .join("");
+
+    if (participantBracket) {
+      participantBracket.innerHTML = renderParticipantBracket(participant);
+    }
+  }
+
+  function renderParticipantBracket(participant) {
+    const bets = participant.bracketBets || [];
+    if (!bets.length) {
+      return `
+        <section class="bracket-panel">
+          <div class="empty compact">Nenhuma chave projetada importada para este participante.</div>
+        </section>
+      `;
+    }
+
+    const finalBet = bets.find((bet) => bet.slot === "FINAL");
+    const champion = finalBet?.winner || "campeão não definido";
+    const runnerUp = finalBet?.winner
+      ? (sameTeam(finalBet.winner, finalBet.team1) ? finalBet.team2 : finalBet.team1)
+      : "";
+    const thirdPlaceBet = bets.find((bet) => bet.slot === "TERCEIRO");
+
+    return `
+      <section class="bracket-panel" aria-label="Chave projetada por participante">
+        <div class="bracket-heading">
+          <div>
+            <h3>Chave projetada até a final</h3>
+            <p>Quartas em diante usam os times previstos por ${escapeHtml(participant.name)}.</p>
+          </div>
+          <div class="bracket-summary">
+            <span>Campeão</span>
+            <strong>${escapeHtml(champion)}</strong>
+            ${runnerUp ? `<small>Finalista: ${escapeHtml(runnerUp)}</small>` : ""}
+          </div>
+        </div>
+        ${thirdPlaceBet?.winner ? `
+          <div class="bracket-note">
+            <span>3º lugar previsto</span>
+            <strong>${escapeHtml(thirdPlaceBet.winner)}</strong>
+          </div>
+        ` : ""}
+        <div class="bracket-phase-grid">
+          ${bracketPhaseGroups(bets).map(renderBracketPhase).join("")}
+        </div>
+      </section>
+    `;
+  }
+
+  function bracketPhaseGroups(bets) {
+    const order = ["Oitavas de Final", "Quartas de Final", "Semifinal", "Terceiro Lugar", "Final"];
+    return order
+      .map((phase) => ({
+        phase,
+        bets: bets.filter((bet) => bet.phase === phase).sort((a, b) => a.matchId - b.matchId),
+      }))
+      .filter((group) => group.bets.length);
+  }
+
+  function renderBracketPhase(group) {
+    return `
+      <section class="bracket-phase">
+        <div class="bracket-phase-heading">
+          <h4>${escapeHtml(group.phase)}</h4>
+          <span>${group.bets.length}</span>
+        </div>
+        <div class="bracket-match-list">
+          ${group.bets.map(renderBracketBetCard).join("")}
+        </div>
+      </section>
+    `;
+  }
+
+  function renderBracketBetCard(bet) {
+    const slot = bracketSlotById(bet.slot);
+    const actual = slot ? resultForMatch(slot) : null;
+    const score = scoreBracketBet(bet, slot, actual);
+    const status = bracketBetStatus(bet, slot, actual, score);
+    return `
+      <article class="bracket-match-card">
+        <div class="bracket-match-meta">
+          <span>${escapeHtml(bet.slot)}</span>
+          <strong class="${status.className}">${escapeHtml(status.label)}</strong>
+        </div>
+        <div class="bracket-score-row">
+          <span>${escapeHtml(bet.team1)}</span>
+          <strong>${bet.g1} x ${bet.g2}</strong>
+          <span>${escapeHtml(bet.team2)}</span>
+        </div>
+        <div class="bracket-winner">
+          <span>Avança</span>
+          <strong>${bet.winner ? escapeHtml(bet.winner) : "desempate pendente"}</strong>
+        </div>
+      </article>
+    `;
+  }
+
+  function bracketBetStatus(bet, slot, actual, score) {
+    if (!slot) return { label: "slot não encontrado", className: "status-waiting" };
+    if (!hasOfficialSlotTeams(slot)) return { label: "aguardando times oficiais", className: "status-waiting" };
+    if (!actual) return { label: "aguardando resultado", className: "status-waiting" };
+    if (!score.eligible) return { label: "fora da chave real", className: "status-missed" };
+    if (score.exact) return { label: `${score.points} pts · placar exato`, className: "status-hit" };
+    if (score.points > 0) return { label: `${score.points} pts · vencedor`, className: "status-good" };
+    return { label: "0 pts", className: "status-missed" };
+  }
+
+  function bracketSlotById(slotId) {
+    return (data.bracketSlots || []).find((slot) => slot.slot === slotId) || null;
   }
 
   function formatDate(value) {
