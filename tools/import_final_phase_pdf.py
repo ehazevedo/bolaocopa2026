@@ -108,10 +108,24 @@ def parse_pdf(pdf_path):
             if rows_seen != len(SLOT_SEQUENCE):
                 raise ValueError(f"Page {page_index + 1}: expected 16 rows, found {rows_seen}")
 
+    apply_known_corrections(bets_by_name)
+
     for bets in bets_by_name.values():
         infer_winners(bets)
 
     return bets_by_name
+
+
+def apply_known_corrections(bets_by_name):
+    corrections = {
+        ("PAULO", "QF-1", "team2"): "Canadá",
+        ("IVETE", "QF-3", "team2"): "Inglaterra",
+    }
+    for (participant, slot, field), value in corrections.items():
+        for bet in bets_by_name.get(participant, []):
+            if bet["slot"] == slot:
+                bet[field] = value
+                break
 
 
 def team_in_bet(team, bet):

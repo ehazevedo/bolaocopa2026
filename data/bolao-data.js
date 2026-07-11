@@ -1,10 +1,12 @@
 window.BOLAO_DATA = {
-  "generatedAt": "2026-07-05T21:04:17.881586+00:00",
+  "generatedAt": "2026-07-11T12:40:48.791198+00:00",
   "sourceFolder": "/Users/tvs/Downloads/Bolao Copa do Mundo Fifa 2026 _16avos.pdf",
   "rules": {
     "simpleResultPoints": 2,
     "exactScoreBonus": 3,
     "maxPerMatch": 5,
+    "finalStageAdvanceBonus": 3,
+    "finalStageMaxPerMatch": 8,
     "stageWeights": {
       "Fase de Grupos": 35,
       "Rodada de 32": 25,
@@ -7508,7 +7510,7 @@ window.BOLAO_DATA = {
           "matchId": 97,
           "phase": "Quartas de Final",
           "team1": "França",
-          "team2": "Marrocos",
+          "team2": "Canadá",
           "g1": 2,
           "g2": 0,
           "winner": "França",
@@ -8155,7 +8157,7 @@ window.BOLAO_DATA = {
           "matchId": 99,
           "phase": "Quartas de Final",
           "team1": "Brasil",
-          "team2": "Mexico",
+          "team2": "Inglaterra",
           "g1": 3,
           "g2": 1,
           "winner": "Brasil",
@@ -14393,11 +14395,11 @@ window.BOLAO_DATA = {
           "slot": "QF-2",
           "matchId": 98,
           "phase": "Quartas de Final",
-          "team1": "Portugal",
+          "team1": "Espanha",
           "team2": "Eua",
           "g1": 2,
           "g2": 1,
-          "winner": "Portugal",
+          "winner": "Espanha",
           "winnerSource": "score"
         },
         {
@@ -14427,10 +14429,10 @@ window.BOLAO_DATA = {
           "matchId": 101,
           "phase": "Semifinal",
           "team1": "França",
-          "team2": "Portugal",
+          "team2": "Espanha",
           "g1": 1,
           "g2": 2,
-          "winner": "Portugal",
+          "winner": "Espanha",
           "winnerSource": "score"
         },
         {
@@ -14459,11 +14461,11 @@ window.BOLAO_DATA = {
           "slot": "FINAL",
           "matchId": 104,
           "phase": "Final",
-          "team1": "Portugal",
+          "team1": "Espanha",
           "team2": "Brasil",
           "g1": 3,
           "g2": 1,
-          "winner": "Portugal",
+          "winner": "Espanha",
           "winnerSource": "score"
         }
       ]
@@ -14480,20 +14482,22 @@ window.BOLAO_DATA = {
   },
   "bracketSlots": [
     {
-      "slot": "OIT-2",
-      "matchId": 90,
-      "phase": "Oitavas de Final",
-      "group": "Fase Final",
-      "team1": "Paraguai",
-      "team2": "França"
-    },
-    {
       "slot": "OIT-1",
       "matchId": 89,
       "phase": "Oitavas de Final",
       "group": "Fase Final",
       "team1": "Canadá",
-      "team2": "Marrocos"
+      "team2": "Marrocos",
+      "date": "2026-07-04"
+    },
+    {
+      "slot": "OIT-2",
+      "matchId": 90,
+      "phase": "Oitavas de Final",
+      "group": "Fase Final",
+      "team1": "Paraguai",
+      "team2": "França",
+      "date": "2026-07-04"
     },
     {
       "slot": "OIT-3",
@@ -14501,7 +14505,8 @@ window.BOLAO_DATA = {
       "phase": "Oitavas de Final",
       "group": "Fase Final",
       "team1": "Brasil",
-      "team2": "Noruega"
+      "team2": "Noruega",
+      "date": "2026-07-05"
     },
     {
       "slot": "OIT-4",
@@ -14509,7 +14514,8 @@ window.BOLAO_DATA = {
       "phase": "Oitavas de Final",
       "group": "Fase Final",
       "team1": "México",
-      "team2": "Inglaterra"
+      "team2": "Inglaterra",
+      "date": "2026-07-05"
     },
     {
       "slot": "OIT-5",
@@ -14517,7 +14523,8 @@ window.BOLAO_DATA = {
       "phase": "Oitavas de Final",
       "group": "Fase Final",
       "team1": "Portugal",
-      "team2": "Espanha"
+      "team2": "Espanha",
+      "date": "2026-07-06"
     },
     {
       "slot": "OIT-6",
@@ -14525,7 +14532,8 @@ window.BOLAO_DATA = {
       "phase": "Oitavas de Final",
       "group": "Fase Final",
       "team1": "EUA",
-      "team2": "Bélgica"
+      "team2": "Bélgica",
+      "date": "2026-07-06"
     },
     {
       "slot": "OIT-7",
@@ -14533,7 +14541,8 @@ window.BOLAO_DATA = {
       "phase": "Oitavas de Final",
       "group": "Fase Final",
       "team1": "Argentina",
-      "team2": "Egito"
+      "team2": "Egito",
+      "date": "2026-07-07"
     },
     {
       "slot": "OIT-8",
@@ -14541,39 +14550,44 @@ window.BOLAO_DATA = {
       "phase": "Oitavas de Final",
       "group": "Fase Final",
       "team1": "Suíça",
-      "team2": "Colômbia"
+      "team2": "Colômbia",
+      "date": "2026-07-07"
     },
     {
       "slot": "QF-1",
       "matchId": 97,
       "phase": "Quartas de Final",
       "group": "Fase Final",
-      "team1": "Vencedor OIT-2",
-      "team2": "Vencedor OIT-1"
+      "team1": "França",
+      "team2": "Marrocos",
+      "date": "2026-07-09"
     },
     {
       "slot": "QF-2",
       "matchId": 98,
       "phase": "Quartas de Final",
       "group": "Fase Final",
-      "team1": "Vencedor OIT-5",
-      "team2": "Vencedor OIT-6"
+      "team1": "Espanha",
+      "team2": "Bélgica",
+      "date": "2026-07-10"
     },
     {
       "slot": "QF-3",
       "matchId": 99,
       "phase": "Quartas de Final",
       "group": "Fase Final",
-      "team1": "Vencedor OIT-3",
-      "team2": "Vencedor OIT-4"
+      "team1": "Noruega",
+      "team2": "Inglaterra",
+      "date": "2026-07-11"
     },
     {
       "slot": "QF-4",
       "matchId": 100,
       "phase": "Quartas de Final",
       "group": "Fase Final",
-      "team1": "Vencedor OIT-7",
-      "team2": "Vencedor OIT-8"
+      "team1": "Argentina",
+      "team2": "Suíça",
+      "date": "2026-07-11"
     },
     {
       "slot": "SF-1",
@@ -14581,7 +14595,8 @@ window.BOLAO_DATA = {
       "phase": "Semifinal",
       "group": "Fase Final",
       "team1": "Vencedor QF-1",
-      "team2": "Vencedor QF-2"
+      "team2": "Vencedor QF-2",
+      "date": "2026-07-14"
     },
     {
       "slot": "SF-2",
@@ -14589,7 +14604,8 @@ window.BOLAO_DATA = {
       "phase": "Semifinal",
       "group": "Fase Final",
       "team1": "Vencedor QF-3",
-      "team2": "Vencedor QF-4"
+      "team2": "Vencedor QF-4",
+      "date": "2026-07-15"
     },
     {
       "slot": "TERCEIRO",
@@ -14597,7 +14613,8 @@ window.BOLAO_DATA = {
       "phase": "Terceiro Lugar",
       "group": "Fase Final",
       "team1": "Perdedor SF-1",
-      "team2": "Perdedor SF-2"
+      "team2": "Perdedor SF-2",
+      "date": "2026-07-18"
     },
     {
       "slot": "FINAL",
@@ -14605,8 +14622,9 @@ window.BOLAO_DATA = {
       "phase": "Final",
       "group": "Fase Final",
       "team1": "Vencedor SF-1",
-      "team2": "Vencedor SF-2"
+      "team2": "Vencedor SF-2",
+      "date": "2026-07-19"
     }
   ],
-  "finalPhaseSource": "/Users/tvs/Downloads/FASE FINAL_BOLAO Copa do Mundo Fifa 2026.xlsx.pdf"
+  "finalPhaseSource": "/Users/tvs/Downloads/Bolao Copa Fifa 2026_REVISADA.pdf"
 };

@@ -395,7 +395,8 @@
   function stageMaxPoints(stage) {
     const maxPerMatch = data.rules.maxPerMatch || 5;
     const matches = data.matches.filter((match) => matchStageKey(match) === stage);
-    return matches.length * maxPerMatch;
+    const bracketSlots = (data.bracketSlots || []).filter((slot) => matchStageKey(slot) === stage);
+    return matches.length * maxPerMatch + bracketSlots.length * finalStageMaxPerMatch();
   }
 
   function weightedPoints(phaseTotals, matchPredicate = () => true) {
@@ -467,19 +468,76 @@
 
   function scoreBracketBet(bet, slot, actual) {
     if (!bet || !actual || !hasCompleteScore(actual) || !hasCompleteScore(bet) || !hasOfficialSlotTeams(slot)) {
-      return { points: 0, exact: false, simple: false, eligible: false };
+      return { points: 0, exact: false, simple: false, advanced: false, eligible: false };
     }
 
-    const sameOrder = sameTeam(bet.team1, slot.team1) && sameTeam(bet.team2, slot.team2);
-    const reverseOrder = sameTeam(bet.team1, slot.team2) && sameTeam(bet.team2, slot.team1);
-    if (!sameOrder && !reverseOrder) {
-      return { points: 0, exact: false, simple: false, eligible: false };
-    }
+    const score = scoreBet({ g1: bet.g1, g2: bet.g2 }, actual);
+    const officialWinner = officialAdvancingTeam(slot, actual);
+    const predictedWinner = bet.winner || predictedWinnerFromScore(bet);
+    const advanced = Boolean(officialWinner && predictedWinner && sameTeam(predictedWinner, officialWinner));
+    const advancePoints = advanced ? finalStageAdvanceBonus() : 0;
 
-    const comparableBet = reverseOrder
-      ? { g1: bet.g2, g2: bet.g1 }
-      : { g1: bet.g1, g2: bet.g2 };
-    return { ...scoreBet(comparableBet, actual), eligible: true };
+    return {
+      points: score.points + advancePoints,
+      exact: score.exact,
+      simple: score.simple,
+      advanced,
+      advancePoints,
+      eligible: true,
+    };
+  }
+
+  function finalStageAdvanceBonus() {
+    return Number(data.rules.finalStageAdvanceBonus || 3);
+  }
+
+  function finalStageMaxPerMatch() {
+    return Number(data.rules.finalStageMaxPerMatch || (
+      (data.rules.simpleResultPoints || 2) + (data.rules.exactScoreBonus || 3) + finalStageAdvanceBonus()
+    ));
+  }
+
+  function predictedWinnerFromScore(bet) {
+    if (!hasCompleteScore(bet)) return "";
+    if (Number(bet.g1) > Number(bet.g2)) return bet.team1 || "";
+    if (Number(bet.g2) > Number(bet.g1)) return bet.team2 || "";
+    return "";
+  }
+
+  function officialAdvancingTeam(slot, actual) {
+    if (!slot || !hasCompleteScore(actual)) return "";
+    if (Number(actual.g1) > Number(actual.g2)) return slot.team1 || "";
+    if (Number(actual.g2) > Number(actual.g1)) return slot.team2 || "";
+    return inferOfficialAdvancingTeamFromNextSlot(slot);
+  }
+
+  function inferOfficialAdvancingTeamFromNextSlot(slot) {
+    const nextSlot = officialNextSlot(slot.slot);
+    if (!nextSlot) return "";
+    if (sameTeam(slot.team1, nextSlot.team1) || sameTeam(slot.team1, nextSlot.team2)) return slot.team1;
+    if (sameTeam(slot.team2, nextSlot.team1) || sameTeam(slot.team2, nextSlot.team2)) return slot.team2;
+    return "";
+  }
+
+  function officialNextSlot(slotId) {
+    const nextBySlot = {
+      "OIT-1": "QF-1",
+      "OIT-2": "QF-1",
+      "OIT-3": "QF-3",
+      "OIT-4": "QF-3",
+      "OIT-5": "QF-2",
+      "OIT-6": "QF-2",
+      "OIT-7": "QF-4",
+      "OIT-8": "QF-4",
+      "QF-1": "SF-1",
+      "QF-2": "SF-1",
+      "QF-3": "SF-2",
+      "QF-4": "SF-2",
+      "SF-1": "FINAL",
+      "SF-2": "FINAL",
+    };
+    const nextSlotId = nextBySlot[slotId];
+    return nextSlotId ? bracketSlotById(nextSlotId) : null;
   }
 
   function hasOfficialSlotTeams(slot) {
@@ -552,7 +610,7 @@
   }
 
   function officialBracketSlots() {
-    return (data.bracketSlots || []).filter((slot) => slot.phase === "Oitavas de Final" && hasOfficialSlotTeams(slot));
+    return (data.bracketSlots || []).filter((slot) => hasOfficialSlotTeams(slot));
   }
 
   function renderPrizes() {
@@ -1277,9 +1335,12 @@
     if (!slot) return { label: "slot não encontrado", className: "status-waiting" };
     if (!hasOfficialSlotTeams(slot)) return { label: "aguardando times oficiais", className: "status-waiting" };
     if (!actual) return { label: "aguardando resultado", className: "status-waiting" };
-    if (!score.eligible) return { label: "fora da chave real", className: "status-missed" };
+    if (!score.eligible) return { label: "não pontuou", className: "status-missed" };
+    if (score.exact && score.advanced) return { label: `${score.points} pts · exato + país`, className: "status-hit" };
     if (score.exact) return { label: `${score.points} pts · placar exato`, className: "status-hit" };
-    if (score.points > 0) return { label: `${score.points} pts · vencedor`, className: "status-good" };
+    if (score.simple && score.advanced) return { label: `${score.points} pts · resultado + país`, className: "status-hit" };
+    if (score.advanced) return { label: `${score.points} pts · país avançou`, className: "status-good" };
+    if (score.points > 0) return { label: `${score.points} pts · placar`, className: "status-good" };
     return { label: "0 pts", className: "status-missed" };
   }
 
