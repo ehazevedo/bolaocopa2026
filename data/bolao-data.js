@@ -14594,8 +14594,8 @@ window.BOLAO_DATA = {
       "matchId": 101,
       "phase": "Semifinal",
       "group": "Fase Final",
-      "team1": "Vencedor QF-1",
-      "team2": "Vencedor QF-2",
+      "team1": "França",
+      "team2": "Espanha",
       "date": "2026-07-14"
     },
     {
@@ -14603,8 +14603,8 @@ window.BOLAO_DATA = {
       "matchId": 102,
       "phase": "Semifinal",
       "group": "Fase Final",
-      "team1": "Vencedor QF-3",
-      "team2": "Vencedor QF-4",
+      "team1": "Inglaterra",
+      "team2": "Argentina",
       "date": "2026-07-15"
     },
     {
@@ -14612,7 +14612,7 @@ window.BOLAO_DATA = {
       "matchId": 103,
       "phase": "Terceiro Lugar",
       "group": "Fase Final",
-      "team1": "Perdedor SF-1",
+      "team1": "França",
       "team2": "Perdedor SF-2",
       "date": "2026-07-18"
     },
@@ -14621,7 +14621,7 @@ window.BOLAO_DATA = {
       "matchId": 104,
       "phase": "Final",
       "group": "Fase Final",
-      "team1": "Vencedor SF-1",
+      "team1": "Espanha",
       "team2": "Vencedor SF-2",
       "date": "2026-07-19"
     }
