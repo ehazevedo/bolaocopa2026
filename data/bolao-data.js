@@ -14613,7 +14613,7 @@ window.BOLAO_DATA = {
       "phase": "Terceiro Lugar",
       "group": "Fase Final",
       "team1": "França",
-      "team2": "Perdedor SF-2",
+      "team2": "Inglaterra",
       "date": "2026-07-18"
     },
     {
@@ -14622,7 +14622,7 @@ window.BOLAO_DATA = {
       "phase": "Final",
       "group": "Fase Final",
       "team1": "Espanha",
-      "team2": "Vencedor SF-2",
+      "team2": "Argentina",
       "date": "2026-07-19"
     }
   ],
