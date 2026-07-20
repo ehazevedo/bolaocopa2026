@@ -610,5 +610,17 @@ window.BOLAO_RESULTS = {
     "g2": 2,
     "team1": "INGLATERRA",
     "team2": "ARGENTINA"
+  },
+  "103": {
+    "g1": 4,
+    "g2": 6,
+    "team1": "FRANÇA",
+    "team2": "INGLATERRA"
+  },
+  "104": {
+    "g1": 1,
+    "g2": 0,
+    "team1": "ESPANHA",
+    "team2": "ARGENTINA"
   }
 };

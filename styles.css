@@ -682,6 +682,63 @@ tbody tr:hover {
   gap: 10px;
 }
 
+.champion-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 26px;
+  padding: 24px;
+  border: 1px solid rgba(216, 173, 0, 0.42);
+  border-left: 7px solid var(--accent);
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(255, 223, 0, 0.18), rgba(33, 185, 121, 0.12)),
+    #fbfff8;
+  box-shadow: var(--shadow);
+}
+
+.champion-panel[hidden] {
+  display: none;
+}
+
+.champion-panel span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--brand-2);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.champion-panel h2 {
+  margin: 0 0 8px;
+  color: var(--ink);
+  font-size: clamp(28px, 4vw, 46px);
+  line-height: 1.06;
+}
+
+.champion-panel p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.champion-panel strong {
+  flex: 0 0 auto;
+  min-width: 170px;
+  padding: 14px 16px;
+  border: 1px solid rgba(0, 48, 135, 0.18);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--brand-2);
+  font-size: 22px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 48, 135, 0.08);
+}
+
 .total-prize {
   color: var(--brand-2);
   font-size: 28px;
@@ -715,6 +772,23 @@ tbody tr:hover {
   font-size: 24px;
 }
 
+.prize-notes {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.prize-notes span {
+  display: block;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
 .rules span {
   display: inline-flex;
   padding: 9px 11px;
@@ -722,6 +796,34 @@ tbody tr:hover {
   border-radius: 8px;
   background: #fbfff8;
   font-weight: 700;
+}
+
+.rules-detail {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.rules-detail article {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.rules-detail h3 {
+  margin: 0 0 10px;
+  color: var(--brand-2);
+  font-size: 15px;
+}
+
+.rules-detail p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 .match-grid {
@@ -1254,8 +1356,22 @@ select,
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .champion-panel {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .champion-panel strong {
+    min-width: 0;
+    width: 100%;
+  }
+
   .prize-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rules-detail {
+    grid-template-columns: 1fr;
   }
 
   .match-bets-board-grid {
@@ -1320,6 +1436,18 @@ select,
 
   .summary-grid {
     grid-template-columns: 1fr;
+  }
+
+  .champion-panel {
+    padding: 18px;
+  }
+
+  .champion-panel h2 {
+    font-size: 28px;
+  }
+
+  .champion-panel p {
+    font-size: 14px;
   }
 
   .prize-grid {

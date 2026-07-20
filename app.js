@@ -15,6 +15,7 @@
   const views = document.querySelectorAll(".view");
   const lastUpdated = document.querySelector("#lastUpdated");
   const leaderboardList = document.querySelector("#leaderboard");
+  const finalChampion = document.querySelector("#finalChampion");
   const leaderboardStageButtons = document.querySelectorAll("[data-leaderboard-stage]");
   const matchBetsBoard = document.querySelector("#matchBetsBoard");
   const matchSearch = document.querySelector("#matchSearch");
@@ -119,6 +120,7 @@
   function renderAll() {
     renderUpdateInfo();
     renderMetrics();
+    renderFinalChampion();
     renderPrizes();
     renderLeaderboard();
     renderMatchGroupFilter();
@@ -570,23 +572,30 @@
     }[key] || key;
   }
 
-  function leaderboardRows(matchPredicate = () => true) {
+  function leaderboardRows(matchPredicate = () => true, rankMode = leaderboardFilters.stage || "all") {
     const rows = data.participants
       .map((participant) => ({ participant, stats: participantStats(participant, matchPredicate) }))
       .sort((a, b) => {
-        if (b.stats.weighted !== a.stats.weighted) return b.stats.weighted - a.stats.weighted;
-        if (b.stats.points !== a.stats.points) return b.stats.points - a.stats.points;
-        if (b.stats.exact !== a.stats.exact) return b.stats.exact - a.stats.exact;
+        const scoreA = leaderboardRankScore(a.stats, rankMode);
+        const scoreB = leaderboardRankScore(b.stats, rankMode);
+        if (scoreB !== scoreA) return scoreB - scoreA;
         return a.participant.name.localeCompare(b.participant.name, "pt-BR");
       });
-    return applyRanks(rows);
+    return applyRanks(rows, rankMode);
   }
 
-  function applyRanks(rows) {
+  function leaderboardRankScore(stats, rankMode = leaderboardFilters.stage || "all") {
+    if (!rankMode || rankMode === "all") {
+      return Number(stats.weighted.toFixed(8));
+    }
+    return stats.points;
+  }
+
+  function applyRanks(rows, rankMode = leaderboardFilters.stage || "all") {
     let previousKey = null;
     let rank = 0;
     return rows.map((row, index) => {
-      const key = `${row.stats.weighted.toFixed(8)}|${row.stats.points}|${row.stats.exact}`;
+      const key = String(leaderboardRankScore(row.stats, rankMode));
       if (key !== previousKey) rank = index + 1;
       previousKey = key;
       return { ...row, rank };
@@ -594,7 +603,7 @@
   }
 
   function renderMetrics() {
-    const rows = leaderboardRows();
+    const rows = leaderboardRows(() => true, "all");
     document.getElementById("metricParticipants").textContent = data.participants.length;
     document.getElementById("metricMatches").textContent = officialRegisteredMatches().length;
     document.getElementById("metricCompleted").textContent = officialCompletedMatches().length;
@@ -623,6 +632,99 @@
     document.getElementById("prizeSecond").textContent = brl(prizes.second || total * 0.3);
     document.getElementById("prizeThird").textContent = brl(prizes.third || total * 0.1);
     document.getElementById("entryFee").textContent = `${participants} x ${brl(entryFee)}`;
+    const prizeNotes = document.getElementById("prizeNotes");
+    if (prizeNotes) prizeNotes.innerHTML = renderPrizeSplitNotes();
+  }
+
+  function renderFinalChampion() {
+    if (!finalChampion) return;
+
+    const rows = leaderboardRows(() => true, "all");
+    const completed = officialCompletedMatches().length;
+    const registered = officialRegisteredMatches().length;
+    if (!rows.length || completed < registered) {
+      finalChampion.innerHTML = "";
+      finalChampion.hidden = true;
+      return;
+    }
+
+    const winners = rows.filter((row) => row.rank === 1);
+    const winnerNames = winners.map((row) => row.participant.name).join(", ");
+    const championLabel = winners.length > 1 ? "Campeões do bolão" : "Campeão do bolão";
+    const score = formatWeightedPoints(winners[0].stats.weighted);
+    const prizeShare = prizeShareForRank(1);
+
+    finalChampion.hidden = false;
+    finalChampion.innerHTML = `
+      <div>
+        <span>Resultado final</span>
+        <h2>${escapeHtml(championLabel)}: ${escapeHtml(winnerNames)}</h2>
+        <p>${completed} de ${registered} jogos finalizados. Pontuação campeã: ${score} pts ponderados.</p>
+      </div>
+      <strong>${escapeHtml(prizeShare)}</strong>
+    `;
+  }
+
+  function renderPrizeSplitNotes() {
+    const groups = prizeSplitGroups();
+    if (!groups.length) return "";
+    return groups.map((group) => `
+      <span>
+        ${escapeHtml(group.label)}: ${escapeHtml(group.names)} ${group.participants.length > 1 ? "recebem" : "recebe"} ${escapeHtml(brl(group.each))}${group.participants.length > 1 ? " cada" : ""}.
+      </span>
+    `).join("");
+  }
+
+  function prizeShareForRank(rank) {
+    const group = prizeSplitGroups().find((item) => item.positions.includes(rank));
+    if (!group) return "";
+    return group.participants.length > 1
+      ? `${brl(group.each)} para cada`
+      : brl(group.each);
+  }
+
+  function prizeSplitGroups() {
+    const rows = leaderboardRows(() => true, "all");
+    const prizes = data.prizes || {};
+    const participants = Number(prizes.participants || data.participants.length || 0);
+    const total = Number(prizes.total || participants * Number(prizes.entryFee || 150));
+    const prizeAmounts = [
+      Number(prizes.first || total * 0.6),
+      Number(prizes.second || total * 0.3),
+      Number(prizes.third || total * 0.1),
+    ];
+    const groups = [];
+    let index = 0;
+
+    while (index < rows.length && index < 3) {
+      const startIndex = index;
+      const score = rows[index].stats.weighted.toFixed(8);
+      while (index < rows.length && rows[index].stats.weighted.toFixed(8) === score) {
+        index += 1;
+      }
+
+      const prizePositions = [];
+      for (let position = startIndex + 1; position <= Math.min(index, 3); position += 1) {
+        prizePositions.push(position);
+      }
+      if (!prizePositions.length) continue;
+
+      const prizePool = prizePositions.reduce((sum, position) => sum + (prizeAmounts[position - 1] || 0), 0);
+      const groupRows = rows.slice(startIndex, index);
+      const participantsInGroup = groupRows.map((row) => row.participant.name);
+      groups.push({
+        positions: prizePositions,
+        participants: participantsInGroup,
+        names: participantsInGroup.join(", "),
+        label: prizePositions.length > 1
+          ? `${prizePositions[0]}º ao ${prizePositions.at(-1)}º lugar`
+          : `${prizePositions[0]}º lugar`,
+        pool: prizePool,
+        each: prizePool / participantsInGroup.length,
+      });
+    }
+
+    return groups;
   }
 
   function renderLeaderboard() {
